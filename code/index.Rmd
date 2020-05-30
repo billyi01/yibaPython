@@ -1,0 +1,41 @@
+---
+output:
+  bookdown::html_book:
+    css: JhengHei.css
+    toc: true
+    toc_float: true
+    keep_md: false
+
+---
+
+# **《易爸親子共學Python編程語言》** {-}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+<!-- ```{r logo, message = FALSE, warning = FALSE, error = FALSE, out.width = "100%"}
+knitr::include_graphics(path = "./python.png")
+``` -->
+
+<!-- ![](./python.png) -->
+ 
+`r knitr::include_graphics("./python.png")`
+
+
+**作者：易爸**
+  
+**日期：`r Sys.Date()`**
+
+**緣起：**
+
+> 我們家的YY和QQ之前玩過[code.org](https://code.org/)、[scratch](https://scratch.mit.edu/)，想讓他們開始試試python，於是嘗試編製一套「不囉嗦的」教材，用以親子共學。
+
+
+\  
+  
+  
+  
+\  
+

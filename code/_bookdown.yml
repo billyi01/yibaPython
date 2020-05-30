@@ -1,0 +1,5 @@
+delete_merged_file: true
+new_session: yes
+output_dir: "../open"
+rmd_files: [
+  "index.Rmd"]
