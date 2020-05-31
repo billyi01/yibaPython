@@ -1,7 +1,7 @@
 # bookdown::html_book:
 #   css: JhengHei.css
 bookdown::gitbook:
-  css: JhengHei.css
+  css: ./css/JhengHei.css
   # toc: true
   # toc_float: true
   toc_depth: 6

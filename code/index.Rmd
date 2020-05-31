@@ -10,7 +10,7 @@ output:
 
 # **《易爸親子共學Python編程語言》** {-}
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
@@ -21,7 +21,7 @@ knitr::include_graphics(path = "./python.png")
 
 <!-- ![](./python.png) -->
  
-`r knitr::include_graphics("./python.png")`
+`r knitr::include_graphics("./img/python.png")`
 
 
 **作者：易爸**
@@ -30,7 +30,7 @@ knitr::include_graphics(path = "./python.png")
 
 **緣起：**
 
-> 我們家的YY和QQ之前玩過[code.org](https://code.org/)、[scratch](https://scratch.mit.edu/)，想讓他們開始試試python，於是嘗試編製一套「不囉嗦的」教材，用以親子共學。
+> 我們家的YY和QQ之前玩過[scratch](https://scratch.mit.edu/)、[code.org](https://code.org/)，想讓他們開始試試python，於是嘗試編製一套「不囉嗦的」教材，用以親子共學。
 
 
 \  

@@ -1,0 +1,52 @@
+# Anaconda安裝
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(scipen = 999)
+# import::from(magrittr, "%>%")
+# reticulate::use_python("D:/Program_Files/Anaconda3/python.exe")
+```
+
+## 何謂Anaconda
+
+開源軟件常有不同模組套件間的相互依賴（interdependence）等問題，因此有人就將較為相容者整理為某個發行（distribution），例如[Linux](https://www.linux.org/)就有Ubuntu、Debian、CentOS、Fedora等發行，而[Python](https://www.python.org/)一樣也有多個發行，其中一個常見的就是[Anaconda](https://www.anaconda.com/)。
+
+## Anaconda安裝
+
+這在網上已有很多說明，此處列舉幾個供參，基本上照著做就可以了：
+
++ [Windows10 安裝 Anaconda 環境](https://ithelp.ithome.com.tw/articles/10229662)
++ [Python教學第0章-Anaconda 完整安裝教學及搭建 vscode 開發環境](https://www.woodowlab.com/python-tutorial-0-anaconda/)
++ [Windows環境 安裝教學（Anaconda）從0到1](https://learnexp.tw/%E3%80%90python%E3%80%91windows%E7%92%B0%E5%A2%83-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8%EF%BC%88anaconda%EF%BC%89%E5%BE%9E0%E5%88%B01/)
++ [Anaconda介紹及安裝教學](https://medium.com/python4u/anaconda%E4%BB%8B%E7%B4%B9%E5%8F%8A%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8-f7dae6454ab6)
++ [Anaconda 簡易入門](https://michaelchen.tech/blog/anaconda-primer/)
+
+## 何謂Jupyter
+
+[Jupyter](https://jupyter.org/)是一種互動式記事本（interactive notebook），使用它可以立即得到（互動）操作結果。
+
+## 開啟Jupyter
+
+此處以Windows為例：
+
+1. 開始＞Anaconda3，選取「Anaconda Navigator」或直接點擊「Jupyter Notebook」
+`r knitr::include_graphics("./img/20200531_Anaconda_startup_menu.png")`
+
+2. 如上步驟選取「Anaconda Navigator」此處再點「Jupyter Notebook」
+`r knitr::include_graphics("./img/20200531_jupyter.png")`
+
+3. 開啟如下畫面，新增（new）一個「Python 3」的筆記
+`r knitr::include_graphics("./img/20200531_jupyter_kernel.png")`
+
+4. 新的空白筆記畫面如下
+`r knitr::include_graphics("./img/20200531_new_py3_ipynb.png")`
+
+## Jupyter教學
+
+這裡找到一篇貼文[最詳盡使用指南：超快上手 Jupyter Notebook](https://zhuanlan.zhihu.com/p/32320214)供參，如果沒能全部理解內容也沒關係，先感覺一下它大概怎麼用就行了。
+
+## 自我練習
+
+嘗試安裝Python的Anaconda發行，開啟Jupyter，新增一個Python的記事本，參考前段網上教學內容，操作一下看看。
+
+

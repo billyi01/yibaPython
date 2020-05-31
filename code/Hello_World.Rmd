@@ -1,0 +1,45 @@
+# 哈囉，世界！
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(scipen=999)
+import::from(magrittr, "%>%")
+reticulate::use_python("D:/Program_Files/Anaconda3/python.exe")
+```
+
+## 何謂字串
+
+把幾個文字符號串接在一起，就形成了字串（string），字串頭尾兩端要用引號，這樣電腦才知道它是字串，例如：`'被單引號包圍的字串'`或`"被雙引號包圍的字串"`。
+
+## 列出字串
+
+我們先嘗試讓電腦列出一些文字，例如：`"哈囉，世界！"`這句，請嘗試執行以下陳述。
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+print("哈囉，世界！")
+```
+
+沒錯，`print()`是用來列出它`()`中的文字的，你可以在`()`中放入字串，例如：`"我要列出這個句子"`（注意：字串被引號包圍著），然後執行以下的陳述就可以將該字串列出。
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+print("我要列出這個句子")
+```
+
+## 何謂註解
+
+註解（comment）就是給人類寫給自己看的說明文字，電腦會忽略它而不進行任何動作。
+
+註解有二種：
++ 單排註解：每一橫列在`#`之後的文字都被視為註解；
++ 多排註解：夾在三個引號`"""`之間的文字都被視為註解。
+
+## 加上註解
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+# 我是一個註解，從橫排最左開始就是。
+print("我不是註解，是要列出的字串") # 我是另一個註解，從橫排中間才開始。
+```
+
+## 自我練習
+
+自己設計一段文字，例如：「我叫『苦連天』，每天過著幸福快樂的日子」，試著讓電腦列出，並加入你自己的註解。

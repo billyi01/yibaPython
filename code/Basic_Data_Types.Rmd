@@ -1,0 +1,80 @@
+# 基本數據型別
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(scipen=999)
+import::from(magrittr, "%>%")
+reticulate::use_python("D:/Program_Files/Anaconda3/python.exe")
+```
+
+
+## 整數
+
+..., -3, -2, -1, 0, 1, 2, 3, ... 這些就是整數（integer）。
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+1
+2
+```
+
+### 列出整數
+
+我們可以用`print()`陳述將其列出，在`()`中，不必再加引號，因為「整數」不是「字串」，它們的「數據型別」是不同的。
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+print(3)
+print("3")
+```
+
+上面二個陳述，都得到`3`這個結果，看不出「整數」與「字串」有何不同啊？到底差異何在？
+
+### 何謂數據型別
+
+電腦有幾個基本的數據型別，整數（integer）是其中之一，字串（string）也是其中之一，我們可以用`type()`查看物件的型別。
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+type(3)
+```
+
+結果中的`<class 'int'>`表示`3`是一個`int`（整數）。
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+type("3")
+type("三")
+```
+
+以上二個陳述的結果都是`<class 'str'>`表示`"3"`、`"三"`都是`str`（字串），兩者都被引號所包圍。
+
+
+### 整數運算
+
+常用的運算子包括：
+```{r, echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
+tibble::tribble(~運算子, ~作用,
+                "+",     "加",
+                "-",     "減",
+                "*",     "乘",
+                "/",     "除",
+                "//",    "商數",
+                "%",     "餘數",
+                "**",    "次方") %>% 
+  knitr::kable()
+```
+
+我們來看看以下幾個實際運算的例子......
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+1 + 2  # 加
+3 - 4  # 減
+5 * 6  # 乘
+8 / 2  # 除
+7 // 3 # 商數
+7 % 3  # 餘數
+3 ** 2 # 次方
+```
+
+
+## 浮點
+
+（未完待續）
+
