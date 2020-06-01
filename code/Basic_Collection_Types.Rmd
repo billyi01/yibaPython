@@ -1,0 +1,28 @@
+# 基本彙集型別（Basic Collection Types）
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(scipen=999)
+import::from(magrittr, "%>%")
+reticulate::use_python(readLines("./../../envar/pypath"))
+```
+
+
+## 元組（tuple）
+
+
+## 串列（list）
+
+
+## 集合（set）
+
+
+
+## 字典（dictionary）
+
+
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+```
+
+

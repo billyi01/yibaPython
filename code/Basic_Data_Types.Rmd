@@ -1,14 +1,14 @@
-# 基本數據型別
+# 基本數據型別（Basic Data Types）
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 options(scipen=999)
 import::from(magrittr, "%>%")
-reticulate::use_python("D:/Program_Files/Anaconda3/python.exe")
+reticulate::use_python(readLines("./../../envar/pypath"))
 ```
 
 
-## 整數
+## 整數（integer）
 
 ..., -3, -2, -1, 0, 1, 2, 3, ... 這些就是整數（integer）。
 
@@ -19,7 +19,8 @@ reticulate::use_python("D:/Program_Files/Anaconda3/python.exe")
 
 ### 列出整數
 
-我們可以用`print()`陳述將其列出，在`()`中，不必再加引號，因為「整數」不是「字串」，它們的「數據型別」是不同的。
+我們可以用`print()`陳述將其列出，在`( )`中，不必再加引號，因為「整數」不是「字串」，它們的「數據型別」是不同的。
+記住，整數不加引號，字串要加引號。
 
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
 print(3)
@@ -40,7 +41,7 @@ type(3)
 
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
 type("3")
-type("三")
+type("三") # 同時列出"3"和"三"的型別
 ```
 
 以上二個陳述的結果都是`<class 'str'>`表示`"3"`、`"三"`都是`str`（字串），兩者都被引號所包圍。
@@ -48,20 +49,22 @@ type("三")
 
 ### 整數運算
 
-常用的運算子包括：
+常用的算數運算至少包括了：
 ```{r, echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
-tibble::tribble(~運算子, ~作用,
-                "+",     "加",
-                "-",     "減",
-                "*",     "乘",
-                "/",     "除",
-                "//",    "商數",
-                "%",     "餘數",
-                "**",    "次方") %>% 
+tibble::tribble(~運算符號, ~作用,
+                "+",       "加",
+                "-",       "減",
+                "*",       "乘",
+                "/",       "除",
+                "//",      "商數",
+                "%",       "餘數",
+                "**",      "次方") %>% 
   knitr::kable()
 ```
 
-我們來看看以下幾個實際運算的例子......
+上表中的運算符號稱為算數運算子（arithmetic operator），此處皆為中置（infix）運算子，在其前後二側的整數則稱為運算元（operand），運算元與運算子整體合稱為運算式或表示式（expression）。
+
+我們來看看以下幾個實際的運算式例子......
 
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
 1 + 2  # 加
@@ -73,8 +76,24 @@ tibble::tribble(~運算子, ~作用,
 3 ** 2 # 次方
 ```
 
+### 自我練習
 
-## 浮點
+打開Jupyter，嘗試用整數進行各種運算。
 
-（未完待續）
+
+## 浮點（float）
+
+
+## 複數（complex）
+
+一個複數包括了實數與虛數，在對負值取平方根時產生，以後學校會教，現在可以暫時不去管它。
+
+## 布林（bool）
+
+
+
+
+## 字串（string）
+
+
 

@@ -1,10 +1,10 @@
-# Anaconda安裝
+# Anaconda安裝（Anaconda Installation）
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 options(scipen = 999)
 # import::from(magrittr, "%>%")
-# reticulate::use_python("D:/Program_Files/Anaconda3/python.exe")
+# reticulate::use_python(readLines("./../../envar/pypath"))
 ```
 
 ## 何謂Anaconda
@@ -45,8 +45,14 @@ options(scipen = 999)
 
 這裡找到一篇貼文[最詳盡使用指南：超快上手 Jupyter Notebook](https://zhuanlan.zhihu.com/p/32320214)供參，如果沒能全部理解內容也沒關係，先感覺一下它大概怎麼用就行了。
 
+## 學習要點
+
+1. 學會安裝Python的Anaconda發行。
+1. 學會開啟Jupyter並能新增Python記事本。
+
+
 ## 自我練習
 
-嘗試安裝Python的Anaconda發行，開啟Jupyter，新增一個Python的記事本，參考前段網上教學內容，操作一下看看。
+嘗試安裝Python的Anaconda發行，開啟Jupyter，新增一個Python的記事本，參考前段Jupyter教學內容，操作一下玩玩看。
 
 

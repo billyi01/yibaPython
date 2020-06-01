@@ -5,4 +5,5 @@ rmd_files: [
   "index.Rmd",
   "Anaconda_Installation.Rmd",
   "Hello_World.Rmd",
-  "Basic_Data_Types.Rmd"]
+  "Basic_Data_Types.Rmd",
+  "Basic_Collection_Types.Rmd"]
