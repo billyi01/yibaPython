@@ -46,25 +46,26 @@ type("三") # 同時列出"3"和"三"的型別
 
 以上二個陳述的結果都是`<class 'str'>`表示`"3"`、`"三"`都是`str`（字串），兩者都被引號所包圍。
 
+### 算術運算子（arithmetic operator）
 
-### 整數運算
-
-常用的算數運算至少包括了：
+常用的算術運算子至少包括了：
 ```{r, echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
-tibble::tribble(~運算符號, ~作用,
-                "+",       "加",
-                "-",       "減",
-                "*",       "乘",
-                "/",       "除",
-                "//",      "商數",
-                "%",       "餘數",
-                "**",      "次方") %>% 
+tibble::tribble(~算數運算子, ~說明,
+                "+"        , "加",
+                "-"        , "減",
+                "*"        , "乘",
+                "/"        , "除",
+                "//"       , "商數",
+                "%"        , "餘數",
+                "**"       , "次方") %>% 
   knitr::kable()
 ```
 
-上表中的運算符號稱為算數運算子（arithmetic operator），此處皆為中置（infix）運算子，在其前後二側的整數則稱為運算元（operand），運算元與運算子整體合稱為運算式或表示式（expression）。
+上表的算數運算子皆為中置（infix）運算子，在其前後二側的整數則稱為運算元（operand），運算元與運算子整體合稱為運算式或表達式（expression）。
 
-我們來看看以下幾個實際的運算式例子......
+### 整數運算
+
+我們來看看幾個實際的整數算術運算式例子......
 
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
 1 + 2  # 加
@@ -78,22 +79,167 @@ tibble::tribble(~運算符號, ~作用,
 
 ### 自我練習
 
-打開Jupyter，嘗試用整數進行各種運算。
+1. 打開Jupyter。
+1. 嘗試用整數進行各種算數運算。
 
 
 ## 浮點（float）
 
+前面所學的整數只構成了數線上等距離散的點，那數線上其它非整數的點要怎麼表示呢？例如：半個蘋果、四分之三條香蕉、八公升的牛奶由五個人來分。這種情形就要用小數點來表示，因為各個數值的小數點位置不一定相同，小數點不固定而是浮動的，故稱為「浮點」。
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+1 / 2  # 半個蘋果
+3 / 4  # 四分之三條香蕉
+8 / 5  # 八公升牛奶分配給五個人
+```
+
+細心的同學在前面整數運算式的例子中就可發現`8 / 2`的結果不是`4`（整數）而是`4.0`（浮點），因為python自動將結果的型別改為浮點了。
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+type(8 / 2)
+```
+
+好奇的你可能會問：「在數學上，`1`完全等於`1.0`、2`完全等於`2.0`，為什麼在電腦上還要特別區分為不同的型別呢？」這是因為電腦的記憶體及儲存媒介所存放的紀錄，只用「0」和「1」來表示，這一大串的0和1的意義，要靠型別區分才能解釋。就好像「大丈夫」出現在中文及日文語境下的意思不同，又好比 The soldier decided to desert his dessert in the desert.（該士兵決定將他的點心捨棄在沙漠裡）其中desert前後意思不同。
+
+### 浮點運算
+
+前面所述的算術運算子，也都可以用在浮點型別的運算元上。
+
+### 型別轉換（整數、浮點）
+
+整數和浮點這二者可以互相轉換，要轉成整數用`int( )`，要轉成浮點用`float( )`。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+int(2.5)       # 浮點轉換為整數，原有小數部分將被移除
+type(int(2.5)) # 浮點轉換為整數，確認改成整數型別
+type(float(3)) # 整數轉換為浮點，確認改成浮點型別
+```
+
+### 自我練習
+
+1. 打開Jupyter。
+1. 嘗試用整數與浮點進行各種算數運算。
+1. 嘗試在整數與浮點間雙向進行型別轉換。
 
 ## 複數（complex）
 
-一個複數包括了實數與虛數，在對負值取平方根時產生，以後學校會教，現在可以暫時不去管它。
+一個複數包括了實數與虛數，虛數部分以j表示，在對負值取平方根時產生，以後學校會教，現在可以暫時不去管它。
 
-## 布林（bool）
+## 布林（boolean）
 
+布林型別有二種值：`True`（真）與`False`（假）；通常是比較運算的結果。
 
+### 比較運算子（comparison operator）
 
+常用的比較運算子有：
+```{r, echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
+tibble::tribble(~比較運算子, ~說明,
+                "=="       , "等於",
+                "!="       , "不等於",	
+                ">"        , "大於",
+                "<"        , "小於",	
+                ">="       , "大於等於",
+                "<="       , "小於等於") %>% 
+  knitr::kable()
+```
 
+注意，python判斷是否相等用`==`（要用二個等號）而不是數學上通用的`=`（只用一個等號），我們來看看幾個實際的比較運算式例子......
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+1 == 2  # 等於
+3 != 4  # 不等於
+5 >= 6  # 大於等於
+7 <= 8  # 小於等於
+```
+
+### 邏輯運算子（logical operator）
+
+一個或多個布林值，還可以進行邏輯運算，邏輯運算子有：
+```{r, echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
+tibble::tribble(~邏輯運算子, ~說明, ~作用,
+                "and"      , "且" , "前後二個運算元都為真的話，結果為真",
+                "or"       , "或" ,	"前後二個運算元只要一個為真，結果為真",
+                "not"      , "非" , "前置運算子，將真的運算元變假，假的變真") %>% 
+  knitr::kable()
+```
+
+直接看實例更容易理解邏輯運算：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+# 「且」的例子
+print(True  and True,
+      True  and False,
+      False and True,
+      False and False)
+# 「或」的例子
+print(True  or True,
+      True  or False,
+      False or True,
+      False or False)
+# 「非」的例子
+print(not True,
+      not False)
+```
+
+### 運算先後順序
+
+假如運算式中含有多個運算子，這些運算子的先後順序，並不是從最左依序執行到最右，有的運算子再更右邊但可能比在左邊的另一些運算子更先被執行，下表中先被執行的排在前面，越後面就越晚被執行。：
+```{r, echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
+tibble::tribble(~運算子               , ~說明,
+                "( )"                 , "括弧",
+                "**"                  , "次方，中置算術運算子",
+                "+x, -x"              , "正號、負號，前置運算子", 
+                "*, /, //, %"         , "乘、除、商數、餘數，中置算術運算子",
+                "+, -"                , "加、減，中置算術運算子",
+                "==, !=, >, >=, <, <=", "中置比較運算子",
+                "not"                 , "非，邏輯運算子",
+                "and"                 , "且，邏輯運算子",
+                "or"                  , "或，邏輯運算子") %>% 
+  knitr::kable()
+```
+
+因為括弧`( )`是最優先的，如果順序不容易記住的話，就自己將要先執行的運算用括弧圍住即可，例如：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+2 + 3 * 4 # 因為先乘除再加減，python先執行 3 * 4 = 12，再執行 2 + 12 = 14
+(2 + 3) * 4 # 使用括弧就可以先做 2 + 3 = 5，再做 5 * 4 = 20
+```
+
+### 型別轉換（布林、整數、浮點）
+
+布林也能和整數與浮點互相轉換，要轉成布林用`bool( )`。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+bool() # 無輸入值為假
+bool(0) # 整數0為假
+bool(1) # 整數1為真
+bool(0.0) # 浮點零值為假
+bool(0.1) # 非零浮點為真
+bool("") # 空字串為假
+bool(" ") # 非空字串為真
+int(True) # 真值為整數1
+int(False) # 假值為整數0
+float(True) # 真值為浮點1.0
+float(False) # 假值為浮點0.0
+```
 ## 字串（string）
 
+### 字串運算
 
+在python中，字串也可以使用算數運算子的「加」（接續）和「乘」（重複），像這樣：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+print("Pen" + "Pineapple" + "Apple" + "Pen") # 將四個單詞接續起來
+print("Apple" * 2) # 將這個單詞重複二次
+print("Pen" + "Pine" + 2 * "Apple" + "Pen") # 先乘再加，先重複再接續
+```
+
+### 型別轉換（字串、整數、浮點）
+
+字串也能和整數、浮點及布林互相轉換，要轉成字串用`str( )`。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+str() # 無輸入值得空字串
+str(1) # 輸入整數得整數字串
+str(1.0) # 輸入浮點得浮點字串
+str(True) # 輸入布林真值為真值字串
+str(False) # 輸入布林假值得假值字串
+int("1") # 整數字串轉為整數
+int("3.14") # 帶小數的字串不能轉為整數
+float("3.14") # 帶小數點的字串轉為浮點
+float("1,234.5") # 字串轉為浮點，字串不得帶有撇節
+```
 
