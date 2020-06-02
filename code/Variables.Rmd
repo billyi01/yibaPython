@@ -9,3 +9,72 @@ reticulate::use_python(readLines("./../../envar/pypath"))
 
 
 ## 何謂變項
+
+變項，就是給物件「起名字、取綽號、貼標籤」裡的「名字、綽號、標籤」，讓物件有了「稱呼」。要怎麼給呢？就用數學中的等號`=`來給（只用一個等號，如果用了二個，就是比較運算子的「等於」），這個給的動作叫做「指派」（assign），讓某個名稱和某個物件之間建立了指涉關係。
+
+指派運算子`=`的左右二側意義不同，它只能將右側的物件指派到左側名稱，而不能反過來做。具體看實例更容易瞭解：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+my_int = 1
+my_float = 3.14
+my_bool = True
+my_str = "Hi"
+print(my_int, my_float, my_bool, my_str)
+```
+
+以上my_int、my_float、my_bool、my_str就是變項，因為項目所指內容物件是可以改變的，就像「小花」這個名字，它現在指小狗，將來可能就指小貓，所以稱為變項，又因為在應用上這些名稱經常指涉數值（整數、浮點），又常被稱為變數。
+
+變項內容怎麼變呢？對原來的名字再指派別的內容即可，比如我們把my_int、my_float內容對調，把my_bool、my_str內容對調，對調的陳述方式是「a, b = b, a」，再列出它們的值，觀察一下結果，看它們內容是否變了？
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+my_int, my_float = my_float, my_int
+my_bool, my_str = my_str, my_bool
+print(my_int, my_float, my_bool, my_str)
+```
+
+## 為何要用變項
+
+用一個稱呼代表複雜的東西非常方便，尤其是要對它進行重複操作時，讓計算過程簡潔明瞭。
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+pi = 3.14159265358979323846264338327950288419716939937510
+a = 2
+b = 3
+c = 5
+d = 7
+print(pi, pi * a, pi * b, pi * c, pi * d)
+```
+
+試想，前例中如沒有用pi這個變項，只能直接鍵入數字的話，是不是很麻煩又容易出錯？
+
+## 指派注意事項
+
+不同的編程語言，指派內涵可能不同，在python的指派是一種「指涉」或「參照」（reference）而非「賦值」，還是看實例比較好瞭解，以下用到`id( )`這個函式，用來識別物件「身分」的，每個物件都有它獨特的身分證號（id值）。
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+a = "apple"
+b = a
+c = "apple"
+print(id(a), id(b), id(c))
+```
+發現到了嗎？上例中a, b, c三者的id是相同的，它們雖然名字不同，但其實是同一個物件。就像家中寵物，爸爸叫牠小拐、媽媽叫牠小怪、孩子叫牠小乖，但其實是同一隻。
+
+
+## 變項命名規則
+
+不是任何文字組合都可當作變項名稱，變項命名是有規則的，先掌握一些簡單的就行：
+
++ 可以組合「大寫字母、小寫字母、數字、底線」。
++ 首字限制只用「字母」，不用「數字」，一般主要使用小寫。
++ 區分大寫小寫，例如：「Egg、egg」被視為二個不同變項。
+
+## 學習要點
+
+1. 理解為何使用變項。
+1. 知道怎麼命名變項。
+1. 熟悉變項指派運算。
+
+
+## 自我練習
+
+1. 打開Jupyter或Spyder。
+1. 將學過的每個數據型別，用變項來表示。
+1. 以各變項作為運算元，配合使用「算術運算子」、「比較運算子」、「邏輯運算子」，構造不同的運算式，看結果是不是自己預期的那樣，有讓人意外的結果嗎？
