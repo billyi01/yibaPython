@@ -1,4 +1,4 @@
-# Anaconda安裝（Anaconda Installation）
+# Anaconda發行
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -21,11 +21,13 @@ options(scipen = 999)
 + [Anaconda介紹及安裝教學](https://medium.com/python4u/anaconda%E4%BB%8B%E7%B4%B9%E5%8F%8A%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8-f7dae6454ab6)
 + [Anaconda 簡易入門](https://michaelchen.tech/blog/anaconda-primer/)
 
-## 何謂Jupyter
+## Jupyter
+
+### 何謂Jupyter
 
 [Jupyter](https://jupyter.org/)是一種互動式記事本（interactive notebook），使用它可以立即得到（互動）操作結果。
 
-## 開啟Jupyter
+### 開啟Jupyter
 
 此處以Windows為例：
 
@@ -41,18 +43,43 @@ options(scipen = 999)
 4. 新的空白筆記畫面如下
 `r knitr::include_graphics("./img/20200531_new_py3_ipynb.png")`
 
-## Jupyter教學
+### Jupyter教學
 
 這裡找到一篇貼文[最詳盡使用指南：超快上手 Jupyter Notebook](https://zhuanlan.zhihu.com/p/32320214)供參，如果沒能全部理解內容也沒關係，先感覺一下它大概怎麼用就行了。
+
+## Spyder
+
+###  何謂Spyder
+
+[Spyder](https://www.spyder-ide.org/)是一個整合開發環境（Integrated Development Environment，IDE），使用它可以幫助瞭解物件內容。
+
+### 開啟Spyder
+
+此處以Windows為例：
+
+1. 開始＞Anaconda3，選取「Anaconda Navigator」或直接點擊「Spyder」
+`r knitr::include_graphics("./img/20200602_Anaconda_startup_menu.png")`
+
+1. 如上步驟選取「Anaconda Navigator」此處再點「Spyder」
+`r knitr::include_graphics("./img/20200602_spyder.png")`
+
+1. 開啟後的畫面如下；
+`r knitr::include_graphics("./img/20200602_spyder_ide.png")`
+
+### Spyder教學
+
+這裡找到一篇貼文[從零開始帶你認識spyder開發環境](https://ithelp.ithome.com.tw/articles/10212062)供參，如果沒能全部理解內容也沒關係，先感覺一下它大概怎麼用就行了。
 
 ## 學習要點
 
 1. 學會安裝Python的Anaconda發行。
-1. 學會開啟Jupyter並能新增Python記事本。
+1. 學會開啟Jupyter並能新增python記事本。
+1. 學會開啟Spyder並能新增py腳本文件。
 
 
 ## 自我練習
 
-嘗試安裝Python的Anaconda發行，開啟Jupyter，新增一個Python的記事本，參考前段Jupyter教學內容，操作一下玩玩看。
-
+1. 嘗試安裝Python的Anaconda發行。
+1. 開啟Jupyter，新增一個python的記事本，參考前段Jupyter教學內容，操作一下玩玩看。
+1. 開啟Spyer，新增一個test.py腳本文件，參考前段Spyder教學內容，瀏覽一下各窗格對應功能。
 

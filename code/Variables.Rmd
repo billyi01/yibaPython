@@ -1,0 +1,11 @@
+# 變項（Variables）
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(scipen=999)
+import::from(magrittr, "%>%")
+reticulate::use_python(readLines("./../../envar/pypath"))
+```
+
+
+## 何謂變項

@@ -6,4 +6,9 @@ rmd_files: [
   "Anaconda_Installation.Rmd",
   "Hello_World.Rmd",
   "Basic_Data_Types.Rmd",
-  "Basic_Collection_Types.Rmd"]
+  "Variables.Rmd",
+  "Basic_Collection_Types.Rmd",
+  "Conditional_Statements.Rmd", 
+  "Loops.Rmd",
+  "Functions.Rmd",
+  "Modules.Rmd"]
