@@ -279,6 +279,8 @@ print(float("1,234.5")) # 字串轉為浮點，字串不得帶有撇節，錯誤
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
 # len( )指length，是個回報長度的函式，物件（字串）放在括弧內，len( )會回報該物件的長度。
 print(len('Dog'), len('Duck'), len('Apple'), len('Banana')) 
+print(max('Hello, World!')) # 列出最大的字符。
+print(min('Hello, World!')) # 列出最小的字符。
 ```
 
 字串方法很多，例示如下：
