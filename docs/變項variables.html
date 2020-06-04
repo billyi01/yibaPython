@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>YiBaPython</title>
-  <meta name="description" content="YiBaPython" />
+  <title>4 變項（Variables） | YiBaPython</title>
+  <meta name="description" content="4 變項（Variables） | YiBaPython" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="YiBaPython" />
+  <meta property="og:title" content="4 變項（Variables） | YiBaPython" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="YiBaPython" />
+  <meta name="twitter:title" content="4 變項（Variables） | YiBaPython" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="anaconda發行.html"/>
+<link rel="prev" href="基本數據型別basic-data-types.html"/>
+<link rel="next" href="基本彙集型別basic-collection-types.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -262,33 +262,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">YiBaPython</h1>
+<div id="變項variables" class="section level1">
+<h1><span class="header-section-number">4</span> 變項（Variables）</h1>
+<div id="何謂變項" class="section level2">
+<h2><span class="header-section-number">4.1</span> 何謂變項</h2>
+<p>變項，就是給物件「起名字、取綽號、貼標籤」裡的「名字、綽號、標籤」，讓物件有了「稱呼」。要怎麼給呢？就用數學中的等號<code>=</code>來給（只用一個等號，如果用了二個，就是比較運算子的「等於」），這個給的動作叫做「指派」（assign），讓某個名稱和某個物件之間建立了指涉關係。</p>
+<p>指派運算子<code>=</code>的左右二側意義不同，它只能將右側的物件指派到左側名稱，而不能反過來做。具體看實例更容易瞭解：</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb148-1"><a href="變項variables.html#cb148-1"></a>my_int <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb148-2"><a href="變項variables.html#cb148-2"></a>my_float <span class="op">=</span> <span class="fl">3.14</span></span>
+<span id="cb148-3"><a href="變項variables.html#cb148-3"></a>my_bool <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb148-4"><a href="變項variables.html#cb148-4"></a>my_str <span class="op">=</span> <span class="st">&quot;Hi&quot;</span></span>
+<span id="cb148-5"><a href="變項variables.html#cb148-5"></a><span class="bu">print</span>(my_int, my_float, my_bool, my_str)</span></code></pre></div>
+<pre><code>## 1 3.14 True Hi</code></pre>
+<p>以上my_int、my_float、my_bool、my_str就是變項，因為項目所指內容物件是可以改變的，就像「小花」這個名字，它現在指小狗，將來可能就指小貓，所以稱為變項，又因為在應用上這些名稱經常指涉數值（整數、浮點），又常被稱為變數。</p>
+<p>變項內容怎麼變呢？對原來的名字再指派別的內容即可，比如我們把my_int、my_float內容對調，把my_bool、my_str內容對調，對調的陳述方式是「a, b = b, a」，再列出它們的值，觀察一下結果，看它們內容是否變了？</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb150-1"><a href="變項variables.html#cb150-1"></a>my_int, my_float <span class="op">=</span> my_float, my_int</span>
+<span id="cb150-2"><a href="變項variables.html#cb150-2"></a>my_bool, my_str <span class="op">=</span> my_str, my_bool</span>
+<span id="cb150-3"><a href="變項variables.html#cb150-3"></a><span class="bu">print</span>(my_int, my_float, my_bool, my_str)</span></code></pre></div>
+<pre><code>## 3.14 1 Hi True</code></pre>
 </div>
-<div id="易爸親子共學python編程語言" class="section level1 unnumbered">
-<h1><strong>《易爸親子共學Python編程語言》</strong></h1>
-<!-- ```{r logo, message = FALSE, warning = FALSE, error = FALSE, out.width = "100%"}
-knitr::include_graphics(path = "./python.png")
-``` -->
-<!-- ![](./python.png) -->
-<p><img src="img/python.png" width="580" /></p>
-<p><strong>作者：易爸</strong></p>
-<p><strong>日期：2020-06-04</strong></p>
-<p><strong>緣起：</strong></p>
-<blockquote>
-<p>我們家的YY和QQ之前玩過<a href="https://scratch.mit.edu/">scratch</a>、<a href="https://code.org/">code.org</a>，想讓他們開始試試python，於是嘗試編製一套「不囉嗦的」教材，用以親子共學。</p>
-</blockquote>
-<p> </p>
-<p> </p>
+<div id="為何要用變項" class="section level2">
+<h2><span class="header-section-number">4.2</span> 為何要用變項</h2>
+<p>用一個稱呼代表複雜的東西非常方便，尤其是要對它進行重複操作時，讓計算過程簡潔明瞭。</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb152-1"><a href="變項variables.html#cb152-1"></a>pi <span class="op">=</span> <span class="fl">3.14159265358979323846264338327950288419716939937510</span></span>
+<span id="cb152-2"><a href="變項variables.html#cb152-2"></a>a <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb152-3"><a href="變項variables.html#cb152-3"></a>b <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb152-4"><a href="變項variables.html#cb152-4"></a>c <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb152-5"><a href="變項variables.html#cb152-5"></a>d <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb152-6"><a href="變項variables.html#cb152-6"></a><span class="bu">print</span>(pi, pi <span class="op">*</span> a, pi <span class="op">*</span> b, pi <span class="op">*</span> c, pi <span class="op">*</span> d)</span></code></pre></div>
+<pre><code>## 3.141592653589793 6.283185307179586 9.42477796076938 15.707963267948966 21.991148575128552</code></pre>
+<p>試想，前例中如沒有用pi這個變項，只能直接鍵入數字的話，是不是很麻煩又容易出錯？</p>
+</div>
+<div id="指派注意事項" class="section level2">
+<h2><span class="header-section-number">4.3</span> 指派注意事項</h2>
+<p>不同的編程語言，指派內涵可能不同，在python的指派是一種「指涉」或「參照」（reference）而非「賦值」，還是看實例比較好瞭解，以下用到<code>id( )</code>這個函式，用來識別物件「身分」的，每個物件都有它獨特的身分證號（id值）。</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb154-1"><a href="變項variables.html#cb154-1"></a>a <span class="op">=</span> <span class="st">&quot;apple&quot;</span></span>
+<span id="cb154-2"><a href="變項variables.html#cb154-2"></a>b <span class="op">=</span> a</span>
+<span id="cb154-3"><a href="變項variables.html#cb154-3"></a>c <span class="op">=</span> <span class="st">&quot;apple&quot;</span></span>
+<span id="cb154-4"><a href="變項variables.html#cb154-4"></a><span class="bu">print</span>(<span class="bu">id</span>(a), <span class="bu">id</span>(b), <span class="bu">id</span>(c))</span></code></pre></div>
+<pre><code>## 657296432 657296432 657296432</code></pre>
+<p>發現到了嗎？上例中a, b, c三者的id是相同的，它們雖然名字不同，但其實是同一個物件。就像家中寵物，爸爸叫牠小拐、媽媽叫牠小怪、孩子叫牠小乖，但其實是同一隻。</p>
+</div>
+<div id="變項命名規則" class="section level2">
+<h2><span class="header-section-number">4.4</span> 變項命名規則</h2>
+<p>不是任何文字組合都可當作變項名稱，變項命名是有規則的，先掌握一些簡單的就行：</p>
+<ul>
+<li>可以組合「大寫字母、小寫字母、數字、底線」。</li>
+<li>首字限制只用「字母」，不用「數字」，一般主要使用小寫。</li>
+<li>區分大寫小寫，例如：「Egg、egg」被視為二個不同變項。</li>
+</ul>
+</div>
+<div id="學習要點-3" class="section level2">
+<h2><span class="header-section-number">4.5</span> 學習要點</h2>
+<ol style="list-style-type: decimal">
+<li>理解為何使用變項。</li>
+<li>知道怎麼命名變項。</li>
+<li>熟悉變項指派運算。</li>
+</ol>
+</div>
+<div id="自我練習-2" class="section level2">
+<h2><span class="header-section-number">4.6</span> 自我練習</h2>
+<ol style="list-style-type: decimal">
+<li>打開Jupyter或Spyder。</li>
+<li>將學過的每個數據型別，用變項來表示。</li>
+<li>以各變項作為運算元，配合使用「算術運算子」、「比較運算子」、「邏輯運算子」，構造不同的運算式，看結果是不是自己預期的那樣，有讓人意外的結果嗎？</li>
+</ol>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="anaconda發行.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="基本數據型別basic-data-types.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="基本彙集型別basic-collection-types.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
