@@ -269,11 +269,11 @@ print(float("1,234.5")) # 字串轉為浮點，字串不得帶有撇節，錯誤
 
 ### 字串方法
 
-方法（methods）就是適用於某型別或類別的函式（functions），要簡單地區別這二者，可看它們對某物件的用法，假設物件名為object，函式名為function，方法名為method：
+方法（methods）就是適用於某型別或類別的函式（functions），要簡單地區別這二者，可看它們對某物件的用法，假設物件名為object，函式名為function，方法名為method，物件是東西像是名詞，函式或方法是動作像是動詞：
 
-+ 函式用法：`function(object)`
++ 函式用法：`function(object)`，「做動作在物件上，物件被做了什麼動作」。
 
-+ 方法用法：`object.method()`
++ 方法用法：`object.method()`，「讓物件發起作用，物件做了什麼動作」。
 
 函式用於字串舉例如下：
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
@@ -312,6 +312,12 @@ print('Hello, World!'.zfill(20)) # zfill( )：在字串左側補0至指定長度
 1. 學會使用`int( )`、`float( )`、'bool( )`、'str( )`等函式，能在不同型別間進行轉換。
 1. 瞭解「算術運算」、「比較運算」、「邏輯運算」用在哪種場合或情境，能掌握各個運算符號（運算子）的具體使用方法。
 1. 學會使用多種字串方法，並能自行舉例說明。
+
+
+## 應用情境
+
+要把字串"3.14"轉換成為整數3，請問要怎麼做？
+
 
 ## 尋找幫助
 

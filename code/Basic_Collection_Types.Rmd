@@ -12,26 +12,31 @@ reticulate::use_python(readLines("./../../envar/pypath"))
 
 ## 元組（tuple）
 
-### 元組的構建
+### 元組建構
 
+用`tuple( )`函式或直接用小括弧`( )`，將一個或多個物件放入即可。
+在直接使用小括弧的情況下，若只放入一個物件，則要在該物件之後加上`,`逗點才行。
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
-empty = ( ) # 用小括弧來建立元組，這是一個空的元組，命名為empty，類別為tuple，因為裡面沒有東西，所以長度為0。
-print(type(empty), len(empty))
-seasons = ("春", "夏", "秋", "冬") # 建立一個內含「四季」字串的元組，命名為seasons，長度為4。
-print(seasons, len(seasons))
-hetero = (1, 3.14, True, "Hi") # 建立一個內含整數、浮點、布林、字串的元組，命名為hetero。
-print(hetero)
+empty_t = ( ) # 用小括弧來建構元組，這是一個空的元組，命名為empty_t，類別為tuple，因為裡面沒有東西，所以長度為0。
+print(type(empty_t), len(empty_t))
+one = (1) # 只用小括弧，就是整數1。
+one_t = (1,) # 用小括弧，整數1之後加個逗號，就是含有一個整數1的元組。
+print(type(one), type(one_t))
+seasons_t = ("春", "夏", "秋", "冬") # 建構一個內含「四季」字串的元組，命名為seasons_t，長度為4。
+print(seasons_t, len(seasons_t))
+hetero_t = (1, 3.14, True, "Hi") # 建構一個內含整數、浮點、布林、字串的元組，命名為hetero_t。
+print(hetero_t)
 ```
 
-### 元組的索引
+### 元組索引
 
 #### 零基索引（zero-based indexing）
 
 元組既然是一種彙集，裡頭當然可能裝了一個以上的物件（稱作該彙集中的元素（element）或成員（member）），如果只想對其中某些特定的元素來操作的話，就要指定是哪個，也就是對其索引，而python中的索引是從0開始算的（以零為基礎），也就是說如果有10個元素照順序放在一起，第一個用0來索引、第二個用1來索引、第三個用2來索引，依此類推到第10個則用9來索引。索引方式：「彙集[索引值]」，超出範圍的索引會得到錯誤訊息。具體做法如下：
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
-t = ('一', '二', '三', '四', '五', '六', '七', '八', '九', '十') # 將內有十個字符的元組命名為t。
-print(t[0], t[1], t[2], t[4], t[7], t[8]) # 列出排在第1, 2, 3, 5, 8, 9位置的元素。
-print(t[10]) # 列出排在第11位置的元素，超出正確索引範圍，發生錯誤。
+ten_t = ('一', '二', '三', '四', '五', '六', '七', '八', '九', '十') # 將內有十個字符的元組命名為ten_t。
+print(ten_t[0], ten_t[1], ten_t[2], ten_t[4], ten_t[7], ten_t[8]) # 列出排在第1, 2, 3, 5, 8, 9位置的元素。
+print(ten_t[10]) # 列出排在第11位置的元素，超出正確索引範圍，發生錯誤。
 ```
 
 #### 負值索引
@@ -43,9 +48,9 @@ print(t[10]) # 列出排在第11位置的元素，超出正確索引範圍，發
 
 以下我們要找到一個長的元組中，倒數第1, 2, 5個位置上的元素：
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
-p = (3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3, 8, 3, 2, 7, 9, 5, 0, 2, 8, 8, 4, 1, 9, 7, 1, 6, 9, 3, 9, 9, 3, 7, 5, 1, 0, 5, 8, 2, 0, 9, 7, 4, 9, 4, 4, 5, 9, 2, 3, 0, 7, 8, 1, 6, 4, 0, 6, 2, 8, 6, 2, 0, 8, 9, 9, 8, 6, 2, 8, 0, 3, 4, 8, 2, 5, 3, 4, 2, 1, 1, 7, 0, 6, 7, 9, 8, 2, 1, 4, 8, 0, 8, 6, 5, 1, 3, 2, 8, 2, 3, 0, 6, 6, 4, 7, 0, 9, 3, 8, 4, 4, 6, 0, 9, 5, 5, 0, 5, 8, 2, 2, 3, 1, 7, 2, 5, 3, 5, 9, 4, 0, 8, 1, 2, 8, 4, 8, 1, 1, 1, 7, 4, 5, 0, 2, 8, 4, 1, 0, 2, 7, 0, 1, 9, 3, 8, 5, 2, 1, 1, 0, 5, 5, 5, 9, 6, 4, 4, 6, 2, 2, 9, 4, 8, 9, 5, 4, 9, 3, 0, 3, 8, 1, 9, 6, 4, 4, 2, 8, 8, 1, 0, 9, 7, 5, 6, 6, 5, 9, 3, 3, 4, 4, 6, 1, 2, 8, 4, 7, 5, 6, 4, 8, 2, 3, 3, 7, 8, 6, 7, 8, 3, 1, 6, 5, 2, 7, 1, 2, 0, 1, 9, 0, 9, 1, 4, 5, 6, 4, 8, 5, 6, 6, 9, 2, 3, 4, 6, 0, 3, 4, 8, 6, 1, 0, 4, 5, 4, 3, 2, 6, 6, 4, 8, 2, 1, 3, 3, 9, 3, 6, 0, 7, 2, 6, 0, 2, 4, 9, 1, 4, 1, 2, 7, 3, 7, 2, 4, 5, 8, 7, 0, 0, 6, 6, 0, 6, 3, 1, 5, 5, 8, 8, 1, 7, 4, 8, 8, 1, 5, 2, 0, 9, 2, 0, 9, 6, 2, 8, 2, 9, 2, 5, 4, 0, 9, 1, 7, 1, 5, 3, 6, 4, 3, 6, 7, 8, 9, 2, 5, 9, 0, 3, 6, 0, 0, 1, 1, 3, 3, 0, 5, 3, 0, 5, 4, 8, 8, 2, 0, 4, 6, 6, 5, 2, 1, 3, 8, 4, 1, 4, 6, 9, 5, 1, 9, 4, 1, 5, 1, 1, 6, 0, 9, 4, 3, 3, 0, 5, 7, 2, 7, 0, 3, 6, 5, 7, 5, 9, 5, 9, 1, 9, 5, 3, 0, 9, 2, 1, 8, 6, 1, 1, 7, 3, 8, 1, 9, 3, 2, 6, 1, 1, 7, 9, 3, 1, 0, 5, 1, 1, 8, 5, 4, 8, 0, 7, 4, 4, 6, 2, 3, 7, 9, 9, 6, 2, 7, 4, 9, 5, 6, 7, 3, 5, 1, 8, 8, 5, 7, 5, 2, 7, 2, 4, 8, 9, 1, 2, 2, 7, 9, 3, 8, 1, 8, 3, 0, 1, 1, 9, 4, 9, 1, 2)
-print(p[len(p)-1], p[len(p)-2], p[len(p)-5]) 
-print(p[-1], p[-2], p[-5]) 
+pi_t = (3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3, 8, 3, 2, 7, 9, 5, 0, 2, 8, 8, 4, 1, 9, 7, 1, 6, 9, 3, 9, 9, 3, 7, 5, 1, 0, 5, 8, 2, 0, 9, 7, 4, 9, 4, 4, 5, 9, 2, 3, 0, 7, 8, 1, 6, 4, 0, 6, 2, 8, 6, 2, 0, 8, 9, 9, 8, 6, 2, 8, 0, 3, 4, 8, 2, 5, 3, 4, 2, 1, 1, 7, 0, 6, 7, 9, 8, 2, 1, 4, 8, 0, 8, 6, 5, 1, 3, 2, 8, 2, 3, 0, 6, 6, 4, 7, 0, 9, 3, 8, 4, 4, 6, 0, 9, 5, 5, 0, 5, 8, 2, 2, 3, 1, 7, 2, 5, 3, 5, 9, 4, 0, 8, 1, 2, 8, 4, 8, 1, 1, 1, 7, 4, 5, 0, 2, 8, 4, 1, 0, 2, 7, 0, 1, 9, 3, 8, 5, 2, 1, 1, 0, 5, 5, 5, 9, 6, 4, 4, 6, 2, 2, 9, 4, 8, 9, 5, 4, 9, 3, 0, 3, 8, 1, 9, 6, 4, 4, 2, 8, 8, 1, 0, 9, 7, 5, 6, 6, 5, 9, 3, 3, 4, 4, 6, 1, 2, 8, 4, 7, 5, 6, 4, 8, 2, 3, 3, 7, 8, 6, 7, 8, 3, 1, 6, 5, 2, 7, 1, 2, 0, 1, 9, 0, 9, 1, 4, 5, 6, 4, 8, 5, 6, 6, 9, 2, 3, 4, 6, 0, 3, 4, 8, 6, 1, 0, 4, 5, 4, 3, 2, 6, 6, 4, 8, 2, 1, 3, 3, 9, 3, 6, 0, 7, 2, 6, 0, 2, 4, 9, 1, 4, 1, 2, 7, 3, 7, 2, 4, 5, 8, 7, 0, 0, 6, 6, 0, 6, 3, 1, 5, 5, 8, 8, 1, 7, 4, 8, 8, 1, 5, 2, 0, 9, 2, 0, 9, 6, 2, 8, 2, 9, 2, 5, 4, 0, 9, 1, 7, 1, 5, 3, 6, 4, 3, 6, 7, 8, 9, 2, 5, 9, 0, 3, 6, 0, 0, 1, 1, 3, 3, 0, 5, 3, 0, 5, 4, 8, 8, 2, 0, 4, 6, 6, 5, 2, 1, 3, 8, 4, 1, 4, 6, 9, 5, 1, 9, 4, 1, 5, 1, 1, 6, 0, 9, 4, 3, 3, 0, 5, 7, 2, 7, 0, 3, 6, 5, 7, 5, 9, 5, 9, 1, 9, 5, 3, 0, 9, 2, 1, 8, 6, 1, 1, 7, 3, 8, 1, 9, 3, 2, 6, 1, 1, 7, 9, 3, 1, 0, 5, 1, 1, 8, 5, 4, 8, 0, 7, 4, 4, 6, 2, 3, 7, 9, 9, 6, 2, 7, 4, 9, 5, 6, 7, 3, 5, 1, 8, 8, 5, 7, 5, 2, 7, 2, 4, 8, 9, 1, 2, 2, 7, 9, 3, 8, 1, 8, 3, 0, 1, 1, 9, 4, 9, 1, 2)
+print(pi_t[len(pi_t)-1], pi_t[len(pi_t)-2], pi_t[len(pi_t)-5]) 
+print(pi_t[-1], pi_t[-2], pi_t[-5]) 
 ```
 看來負值索引的方法更簡潔。
 
@@ -53,53 +58,53 @@ print(p[-1], p[-2], p[-5])
 
 範圍索引用在一次找出好幾個不同位置上的元素，方式為「彙集[起點位置:（不含）終點位置]」，索引值可以是負值，實例如下：
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
-print(t) # 變項t是有十個字符的元組。
-print(t[2:5]) # 索引2（第3個）～不含索引5（第6個）
-print(t[5:-2]) # 索引5（第6個）～不含倒數第2個
-print(t[-8:7]) # 倒數第8個～不含索引7（第8個）
+print(ten_t) # 變項ten_t是有十個字符的元組。
+print(ten_t[2:5]) # 索引2（第3個）～不含索引5（第6個）
+print(ten_t[5:-2]) # 索引5（第6個）～不含倒數第2個
+print(ten_t[-8:7]) # 倒數第8個～不含索引7（第8個）
 ```
 
 
 範圍索引如省略起點位置或終點位置的話，各自表示「從頭開始、直到最尾」的意思：
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
-print(t[:5]) # 從第一個～不含索引5（第6個）
-print(t[5:]) # 從索引5（第6個）～到最後一個
-print(t[:]) # 從第一個～到最後一個
+print(ten_t[:5]) # 從第一個～不含索引5（第6個）
+print(ten_t[5:]) # 從索引5（第6個）～到最後一個
+print(ten_t[:]) # 從第一個～到最後一個
 ```
 
 
 範圍索引不一定要在位置上連續，也可以有間隔，方式為「彙集[起點位置:（不含）終點位置:間隔]」，如下：
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
-print(t[2:8:2]) # 索引2（第3個）～不含索引8（第9個），間隔為2。
-print(t[::3]) # 從頭至尾，間隔為3。
+print(ten_t[2:8:2]) # 索引2（第3個）～不含索引8（第9個），間隔為2。
+print(ten_t[::3]) # 從頭至尾，間隔為3。
 ```
 
 ### 元組算術運算
 
 前面提及字串可以使用算術運算子的「加」（接續）和「乘」（重複），元組也可以，而且也是先乗再加：
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
-print(seasons + hetero * 2)
-print(t[1:4] + season[::2] * 2 + hetero[-2:] * 3)
+print(seasons_t + hetero_t * 2)
+print(ten_t[1:4] + seasons_t[::2] * 2 + hetero_t[-2:] * 3)
 ```
 
 
 ### 元組常用函式
 
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
-print(len(seasons), len(hetero)) # 型別相同或不同，都能回報長度。
-print(max(seasons), min(seasons)) # 型別相同還能比大小。
-print(max(hetero), min(hetero)) # 型別不同則無大小之分。
-print(*zip(seasons, hetero)) # 將長度相同的彙集中索引位置相同者，弄成同組，再用前置星號展開。
-print(*enumerate(t)) # 將索引位置與對應的元素，弄成同組，再用前置星號展開。
-print(*reversed(t)) # 將元組內的元素反向排列，最前的變成最後的、最後的變成最前的。
-print(sum(p)) # 將元組內的每個元素相加，求取其和。
+print(len(seasons_t), len(hetero_t)) # 型別相同或不同，都能回報長度。
+print(max(seasons_t), min(seasons_t)) # 型別相同還能比大小。
+print(max(hetero_t), min(hetero_t)) # 型別不同則無大小之分，錯誤。
+print(*zip(seasons_t, hetero_t)) # 將長度相同的彙集中索引位置相同者，弄成同組，再用前置星號展開。
+print(*enumerate(ten_t)) # 將索引位置與對應的元素，弄成同組，再用前置星號展開。
+print(*reversed(ten_t)) # 將元組內的元素反向排列，最前的變成最後的、最後的變成最前的。
+print(sum(pi_t)) # 將元組內的每個元素相加，求取其和。
 ```
 
 ### 元組常用方法
 
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
-print(p.count(3)) # 回報元組p中有幾個元素的值是3。
-print(p.index(9)) # 回報元組p中原素為9最早出現在哪個索引值。
+print(pi_t.count(3)) # 回報元組pi_t中有幾個元素的值是3。
+print(pi_t.index(9)) # 回報元組pi_t中原素為9最早出現在哪個索引值。
 ```
 
 ### 自我練習（元組）
@@ -110,16 +115,250 @@ print(p.index(9)) # 回報元組p中原素為9最早出現在哪個索引值。
 
 ## 串列（list）
 
+### 串列建構
+
+前面提到元組可直接用`( )`小括弧來建構，這裡要學的串列則可直接用`[ ]`中括弧來建構。
+使用函式`list( )`建構串列當然也沒問題，還可轉換型別。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+empty_l = [ ] # 用中括弧來建立元組，這是一個空的串列，命名為empty_list，類別為list，因為裡面沒有東西，所以長度為0。
+print(type(empty_l), len(empty_l))
+seasons_l = list(seasons_t) # 用list( )將元組型別中的各元素放到串列之中。
+print(seasons_l, type(seasons_l))
+hetero_l = list(hetero_t) # 用list( )將元組型別中個各元素放到串列之中。
+print(hetero_l, type(hetero_l))
+print([seasons_t], [hetero_t]) # 只用中括弧的話，則會變成只有一個元素的串列，該元素在此例是個元組。
+```
+
+### 串列索引
+
+前面提到元組的各種索引方式，串列全部都可以用。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+ten_l = list(ten_t) # 用list( )將元組型別中的各元素放到串列之中。
+print(ten_l) # 變項ten_l是有十個字符的串列。
+print(ten_l[2:5]) # 索引2（第3個）～不含索引5（第6個）
+print(ten_l[5:-2]) # 索引5（第6個）～不含倒數第2個
+print(ten_l[-8:7]) # 倒數第8個～不含索引7（第8個）
+print(ten_l[:5]) # 從第一個～不含索引5（第6個）
+print(ten_l[5:]) # 從索引5（第6個）～到最後一個
+print(ten_l[:]) # 從第一個～到最後一個
+print(ten_l[2:8:2]) # 索引2（第3個）～不含索引8（第9個），間隔為2。
+print(ten_l[::3]) # 從頭至尾，間隔為3。
+```
+
+
+
+### 串列算術運算、常用函式、常用方法
+
+前面提及元組可以使用的算術運算、函式、方法，全部可以用在串列上：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+print(seasons_l + hetero_l * 2) # 先乘後加。
+print(ten_l[1:4] + seasons_l[::2] * 2 + hetero_l[-2:] * 3) # 混合索引與先乘後加的運算。
+print(len(seasons_l), len(hetero_l)) # 型別相同或不同，都能回報長度。
+print(max(seasons_l), min(seasons_l)) # 型別相同還能比大小。
+print(max(hetero_l), min(hetero_l)) # 型別不同則無大小之分，錯誤。
+print(*zip(seasons_l, hetero_l)) # 將長度相同的彙集中索引位置相同者，弄成同組，再用前置星號展開。
+print(*enumerate(ten_l)) # 將索引位置與對應的元素，弄成同組，再用前置星號展開。
+print(*reversed(ten_l)) # 將元組內的元素反向排列，最前的變成最後的、最後的變成最前的。
+pi_l = list(pi_t) # 用list( )將元組型別中的各元素放到串列之中。
+print(sum(pi_l)) # 將串列內的每個元素相加，求取其和。
+print(pi_l.count(3)) # 回報串列pi_l中有幾個元素的值是3。
+print(pi_l.index(9)) # 回報串列pi_l中原素為9最早出現在哪個索引值。
+```
+
+
+### 物件可變與否
+
+學到這裡，也許你有疑問：元組有的功能串列都有，那為什麼python要區分這二者呢？事實上串列比元組多出很多功能，因為串列是「可變的（mutable）」而元組是「不可變的（immutable）」，前面學過的整數、符點、布林、字串也都是不可變的。我們用例子來學：
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+print(ten_t, "\n", ten_l) # 列出元組ten_t和串列ten_l，其中"\n"是「到下一排」的意思。
+ten_t[0] = "零" # 對元組索引0的第一個元素，用"零"取代，發生錯誤，元組為不可變的，不能改變其中元素。
+ten_l[0] = "零" # 對串列索引0的第一個元素，用"零"取代，沒有錯誤，串列為可變的，能夠改變其中元素。
+print(ten_l)
+ppap = "PenPineappleApplePen" # 建構一個字串。
+print(ppap[7]) # 列出字串ppap索引7的第八個元素。
+ppap[7] = "A" # 對字串索引7的第八個元素，用"A"取代，發生錯誤，字串為不可變的，不能改變其中元素。
+```
+
+
+### 串列可用方法
+
+因為串列是可變的，它內含元素可以變動，所以比元組有很多方法可用，以下這些方法不能用在元組上：
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+print(ten_l) # 列出ten_t串列。
+ten_l.append("十一") # 增加一個元素。
+print(ten_l)
+ten_l.extend(["十二", "十三"]) # 增加一個串列。
+print(ten_l)
+ten_l.insert(3, 2.5) # 在指定的索引位置插入一個元素。
+print(ten_l)
+ten_l.pop(3) # 移除特定索引位置的元素。
+print(ten_l)
+ten_l_2 = ten_l # 讓二個變項指涉相同內容。
+ten_l_2[10] = 11 # 更改新變項的某個元素。
+print(ten_l_2) # 檢查新變項內容是否改變。
+print(ten_l) # 檢查原來變項內容是否改變。
+ten_l_copy = ten_l.copy() # 淺的複製一個串列，先不必管什麼是「淺的」。
+print(ten_l_copy == ten_l, id(ten_l_copy), id(ten_l)) # 測試兩者是否相等，是否為同一物件。
+ten_l_copy[11] = 12 # 更改複製變項的某個元素。
+print(ten_l_copy) # 檢查複製變項內容是否改變。
+print(ten_l) # 檢查原來變項內容是否改變。
+```
+
+既然可變的串列list的功能比不可變的元組tuple多，那麼為何還要保留元組的存在呢？全都用串列就好啦！
+事實上，很多常見的地方還是用元組方便的，比如說我們之前學過的交換「a, b = b, a」其實就是把指派運算子右側的b, a二個元素先弄成元組，在左側再將元組解開成二個元素讓a, b變項指涉原來b, a所指涉的內容。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+a, b = 1, 2
+c1 = a, b
+print(c1, type(c1))
+b, a = a, b
+c2 = a, b
+print(c2, type(c2))
+```
+
+### 學習要點（可索引的物件）
+
+字串、元組、串列都是可被索引的，可以索引的物件就有特定的順序關係（元素有固定的位置），因此都是有序的，但其中只有串列是可變的：
+```{r, echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
+tibble::tribble(~型別    , ~名稱  , ~有序與否, ~可變與否,
+                "string" , "字串" , "是"     , "否",
+                "tuple"  , "元組" , "是"     , "否",
+                "list"   , "串列" , "是"     , "是") %>% 
+  knitr::kable()
+```
+
+### 自我練習（串列）
+
+1. 打開Jupyter或Spyder。
+1. 自己建構一些串列，將學過的每個串列可用的函式和方法，至少用自己的例子執行三次，看看與自己的預期是否相同。
 
 ## 集合（set）
 
+### 集合建構
+
+集合是由無序的不重複的元素所構成的彙集，一定要用`set( )`來建構，而不能直接用大括弧`{ }`，因為後者已經被後面會提到的字典用掉了。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+empty_d = {} # 只用大括弧，會變成字典（dictionary）。
+empty_s = set( ) # 建構一個空集合。
+print(type(empty_d), type(empty_s)) # 列出型別。
+ten_s = set(ten_t) # 用set( )將元組型別中的各元素放到集合之中。
+print(ten_s) # 請注意，列出結果順序與原來的元組不同，因為集合中的元素是沒有順序概念的。
+print(ten_s[0]) # 因為沒有順序的概念，無法用位置來索引到特定元素，所以發生錯誤。
+pi_s = set(pi_t) # 用set( )將元組型別中的各元素放到集合之中，重複元素會被移除。
+print(pi_s)
+```
+
+### 集合方法
+
+集合雖然沒有順序，但它是可變的，我們可以增減刪改其中元素，所以集合也有很多方法可用：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+tiengan_s = set(["甲", "乙", "丙", "丁", "戊"]) # 建構一個含有五個元素的集合。
+print(tiengan_s)
+tiengan_s.add("己") # 添加一個元素。
+print(tiengan_s)
+tiengan_s.update(["戊", "己", "庚", "辛"]) # 用串列中的四個元素更新集合內容，元素不會重複。
+print(tiengan_s)
+tiengan_s.remove("丙") # 用remove移除一個元素。
+print(tiengan_s)
+tiengan_s.remove("丙") # 用remove移除不存在的元素，會發生錯誤。
+tiengan_s.discard("丁") # 用discard移除另一個元素。
+print(tiengan_s)
+tiengan_s.discard("丁") # 用discard移除不存在的元素，不會發生錯誤。
+tiengan_s.pop() # 用pop移除任一元素，因為集合是無序的，所以不確定結果是哪個元素被移除。
+print(tiengan_s) 
+```
+
+以下我們來看一下基本的集合運算，包括測試是否為子集或超集，找出二個集合之間的交集、聯集、差集等：
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+# 先從前面的元組建構一些集合備用，列出它們的內容。
+set_t = set(ten_t)
+set_a = set(ten_t[1:6])
+set_b = set(ten_t[3:8])
+print(set_t, "\n", set_a, set_b)
+print(set_a.issubset(set_t), set_t.issubset(set_b)) # 測試是否為子集。
+print(set_a.issuperset(set_t), set_t.issuperset(set_b)) # 測試是否為超集。
+
+print(set_a.intersection(set_b)) # 交集，在set_a且在set_b。
+print(set_a.difference(set_b)) # 差集，在set_a，不在set_b。
+print(set_b.difference(set_a)) # 差集，在set_b，不在set_a。
+print(set_a.union(set_b)) # 聯集，在set_a或在set_b。
+set_t.clear() # 移除集合中所有元素。
+print(set_t) # 沒有元素的集合即為空集合。
+```
+
+
+### 自我練習（集合）
+
+1. 打開Jupyter或Spyder。
+1. 自己建構一些集合，將學過的每個集合可用的函式和方法，至少用自己的例子執行三次，看看與自己的預期是否相同。
 
 
 ## 字典（dictionary）
 
+### 字典建構
 
+字典可以用`dict( )`函式來建構，也可以用前面提過的大括弧`{ }`來建構，如果是後者，寫法是這樣的：「{鍵1:值1, 鍵2:值2, 鍵3:值3, ...}」，例示如下：
 
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+fruits_d = {'A': 'Apple', 'B': 'Banana', 'C': 'Cherry'}
+print(fruits_d, type(fruits_d))
+```
+
+### 字典索引
+
+字典與集合相同的是它也是無序的，其中的元素沒有固定位置的概念，與串列和元素相同的是，字典也是可變的，因為我們可以對字典增刪修改內容。
+
+字典中元素沒有固定位置，所以不能用位置來索引，但因為其中的「鍵（key）」是不可變而且是不重覆的，所以我們可以用它來索引，並且用來增刪內容。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+fruits_d['A'] # 回報特定鍵所對應的值。
+fruits_d['C'] = 'Cantaloupe' # 修改特定鍵所對應的值。
+fruits_d['D'] = 'Dewberries' # 如果索引用的鍵並不在字典中，則此指派將會新增一對鍵與值。
+print(fruits_d)
+fruits_d[('E', 'F')] = ('Eggfruit', 'Fig') # 元組為不可變的，可以作為鍵來使用。
+print(fruits_d)
+fruits_d[['G', 'H']] = ['Grape', 'Honeydew'] # 串列是可變的，作為鍵會產生錯誤。
+```
+
+### 字典方法
+
+幾個字典常用方法如下：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+fruits_d.items() # 回報每對鍵與值。
+fruits_d.keys() # 回報全部的鍵，鍵不能重覆。
+fruits_d.values() # 回報全部的值，值可以重覆。
+fruits_d.get('B') # 回報特定鍵所對應的值。
+fruits_d.pop('D') # 移除一對鍵與值。
+print(fruits_d)
 ```
 
 
+### 學習要點（型別、索引、有序、可變）
+
+學習到現在，有幾個型別包括字串、元組、串列、集合、字典等，它們的特性及操作方式，應該都已經有概念了，現在再將它們是否能被索引、元素是否有序、內容是否可變，表列如下，
+```{r, echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
+tibble::tribble(~型別       , ~名稱  , ~索引  , ~有序與否, ~可變與否,
+                "string"    , "字串" , "位置" , "是"     , "否",
+                "tuple"     , "元組" , "位置" , "是"     , "否",
+                "list"      , "串列" , "位置" , "是"     , "是",
+                "set"       , "集合" , "無"   , "否"     , "是",
+                "dictionary", "字典" , "鍵"   , "否"     , "是") %>% 
+  knitr::kable()
+```
+
+### 自我練習（字典）
+
+1. 打開Jupyter或Spyder。
+1. 自己建構一些字典，將學過的每個字典可用的函式和方法，至少用自己的例子執行三次，看看與自己的預期是否相同。
+
+## 巢式彙集（nested collection）
+
+### 巢式彙集建構
+
+從上面字典的例子，可以看到含有多個元素的元組，可以作為字典的鍵與值，事實上只要不違反這些彙集的建構規則，彙集之中的元素可以是另一個彙集，因為結構會變得比較複雜，這裡先不深入去談，只要瞭解它們可以一個套一個，最後有可能形成多層次的複雜構造。
+
+### 自我練習（巢式彙集）
+
+1. 打開Jupyter或Spyder。
+1. 自己建構一些巢式彙集，隨意使用前面學過的各種函式或方法來操作，看看自己有沒有辦法從多層次的結構一路索引到最深的元素，如果它是可變的，則嘗試修改它。
