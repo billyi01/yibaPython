@@ -9,3 +9,106 @@ reticulate::use_python(readLines("./../../envar/pypath"))
 
 
 ## 何謂條件
+
+在編程語言中的條件，指的是邏輯條件，也就是比較運算的結果，其為布林型別，有真（`True`）或假（`False`）二種值，為真時表示條件被滿足，為假則條件不滿足。再複習一下常見的比較運算：
+
++ 等於：a == b（請注意，二個等號是測試相等與否的邏輯運算子，一個等號是指派運算子）
++ 不等於：a != b
++ 小於：a < b
++ 小於等於：a <= b
++ 大於：a > b
++ 大於等於：a >= b
+
+
+一個以上的布林值還可以用邏輯運算「且、或、非」得到單一結果，例如：
+
++ 功課做完「and」家事做完，才可以玩遊戲。
++ 數學得滿分「or」英語等滿分，都能有獎勵。
++ 「not」家庭聯絡簿上無老師紅字，家長不開心。
+
+
+
+
+## if相關陳述
+
+### if... 陳述
+
+這是「如果這樣，就做一些什麼」的意思，其中的「這樣」就是邏輯條件，假設「如果阿萬有了100元，他就開心」：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+money = 128 # 阿願最初有這麼多錢。
+if money >= 100: # if後面接的是邏輯條件，結果為真時，執行分號下一橫排起的陳述，下一橫排要退縮。
+    paragf = "A1 has {} and happy".format(money) # 常見退縮四個空白。
+    print(paragf) # 齊頭退縮，代表相同的代碼區塊層級。
+```
+注意，if... 陳述之下一層次的代碼，若無齊頭退縮，將會產生錯誤！
+
+if... 陳述也可以寫成單句，如下：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+if money >= 100: print("A1 has {} and happy".format(money))
+```
+
+
+
+### if... else... 陳述
+
+這是「如果這樣，就做一些什麼，如果不這樣，就做另一些什麼」的意思，假設「如果阿萬有了100元，他就說他開心，如果他只有不到100元，他就不開心」：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+money = money - 30 # 阿萬花掉了一些錢，這句等同 money -= 30。
+if money >= 100:
+    paragf = "A1 has {} and happy".format(money)
+    print(paragf)
+else:
+    paragf = "A1 has {} and unhappy".format(money)
+    print(paragf)
+```
+
+if... else... 陳述也可以寫成單句，如下：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+print("A1 has {} and happy".format(money)) if money >= 100 else print("A1 has {} and unhappy".format(money))
+```
+
+
+### if... elif... else... 陳述
+
+這是「如果這樣，就做一些什麼，如果那樣，就做另一些什麼，如果不這樣不那樣，就做其他一些什麼」的意思，假設「如果阿萬有了200元，他就會超開心，如果有了100元，他就開心，如果只有不到100元，他就不開心」：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+money = money + 150 # 阿萬得到一些錢，這句等同 money += 150。
+if money >= 200:
+    paragf = "I'm A1, I have {} dollars and I'm super happy".format(money)
+    print(paragf)
+elif money >= 100:
+    paragf = "I'm A1, I have {} dollars and I'm happy".format(money)
+    print(paragf)
+else:
+    paragf = "I'm A1, I have {} dollars and I'm unhappy".format(money)
+    print(paragf)
+```
+
+
+if... elif... else... 陳述也可以寫成單句，如下：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+print("A1 has {} and super happy".format(money)) if money >= 200 else print("A1 has {} and happy".format(money)) if money >= 100 else print("A1 has {} and unhappy".format(money))
+```
+請注意其「... if ... else ... if ... else ...」用法。
+
+
+## 學習要點
+
+1. 複習「比較運算」、「邏輯運算」。
+2. 明白「if」、「if else」、「if elif else」語法，能夠熟練使用。
+
+
+## 應用情境
+
+
++ 請寫一段代碼，執行後會要求使用者輸入得分，依據得分列出等第：
+
+  + 等於100：棒
+  + 大於等於90：優
+  + 大於等於80：甲
+  + 大於等於70：乙
+  + 大於等於60：丙
+  + 小於60：嗚
+
++ 修改代碼，對於負分或超過100分的，列出「？」。
+

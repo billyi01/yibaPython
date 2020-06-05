@@ -8,6 +8,7 @@ rmd_files: [
   "Basic_Data_Types.Rmd",
   "Variables.Rmd",
   "Basic_Collection_Types.Rmd",
+  "Sequence_Types.Rmd",
   "Conditional_Statements.Rmd", 
   "Loops.Rmd",
   "Functions.Rmd",
