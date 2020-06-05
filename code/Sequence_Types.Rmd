@@ -1,0 +1,161 @@
+# 序列型別（Sequence Types）
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(scipen=999)
+import::from(magrittr, "%>%")
+reticulate::use_python(readLines("./../../envar/pypath"))
+```
+
+前面提到「字串（string）、元組（tuple）、串列（list）」等都是有序的，也就是說其中元素的排列有其順序，這些有內在順序的型別，稱為序列型別（sequence types）。
+
+這裡再新學一個`range( )`函式，它會回報一個「範圍物件」，該物件同樣也是一種序列。
+
+還有，因為字串是很基本的型別，它的列出格式其實可以有很多變化，還有其他與串列相關的方法，如：拆分（split）、結合（join），本章我們就這方面來看一些應用。
+
+至此我們已經學了不少型別，每種型別都有與其他型別相同或不相同的方法，要怎樣能夠很快地知道某個型別的物件有哪些方法可用呢？如果在使用時用了很多不同的變項名稱來指涉物件，快弄不清楚有哪些變項，每個變項名稱代表什麼型別的物件？怎麼辦呢？請接著看本章後面解決方法。
+
+接著我們對序列型別的共用方法再回顧複習一下。
+
+
+## 範圍（range）
+
+### 範圍建構
+
+在「[基本彙集型別](%E5%9F%BA%E6%9C%AC%E5%BD%99%E9%9B%86%E5%9E%8B%E5%88%A5basic-collection-types.html)」那一章，我們學過了「[範圍索引](%E5%9F%BA%E6%9C%AC%E5%BD%99%E9%9B%86%E5%9E%8B%E5%88%A5basic-collection-types.html#%E7%AF%84%E5%9C%8D%E7%B4%A2%E5%BC%95)」，範圍物件也是同樣概念，它是一連串的整數，預設也是以零作為起點，直到最接近終點但不是終點的那個整數。我們一樣用例子來學習：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+# 只輸入一個值，代表終點的值，如果輸入0為終點，起點預設也是0，因為沒有「從0開始到小於0的最大整數」，長度為0。
+r0 = range(0)
+r1 = range(1)
+r2 = range(2)
+r3 = range(3)
+print(type(r0), len(r0), r0, *r0) # 列出型別、長度、物件、展開物件。
+print(type(r1), len(r1), r1, *r1)
+print(type(r2), len(r2), r2, *r2)
+print(type(r2), len(r2), r2, *r2)
+```
+
+如果輸入二個值，第一個是起點，第二個是終點，實際範圍會小於終點，如下：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+r23 = range(2, 3)
+r35 = range(3, 5)
+r58 = range(5, 8)
+print(type(r23), len(r23), r23, *r23)
+print(type(r35), len(r35), r35, *r35)
+print(type(r58), len(r58), r58, *r58)
+```
+
+如果輸入三個值，第三個是間隔，如下：
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+r272 = range(2, 7, 2)
+r193 = range(1, 9, 3)
+print(type(r272), len(r272), r272, *r272)
+print(type(r193), len(r193), r193, *r193)
+```
+
+
+### 範圍用途
+
+範圍（range）在後面談到迴圈（loop）時很好用，我們留待那時再談。
+
+
+## 字串（string）
+
+### 字串格式
+
+這裡我們來學字串的格式`format( )`方法，請看以下例子：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+name_1 = "黑妞"
+name_2 = "白爺"
+age_1 = 2
+age_2 = 5
+animal_1 = "狗兒"
+animal_2 = "貓兒"
+say_1 = "汪嗚"
+say_2 = "喵凹"
+string_a = "我的好朋友叫{}，牠今年{}歲，是隻{}，最愛說的話是「{}」！"
+pet_a1 = string_a.format(name_1, age_1, animal_1, say_1)
+pet_a2 = string_a.format(name_2, age_2, animal_2, say_2)
+print(pet_a1, "\n", pet_a2)
+string_b = "我的好朋友叫{0}，牠今年{1}歲，是隻{2}，最愛說的話是「{3}」！"
+pet_b1 = string_b.format(name_1, age_1, animal_1, say_1)
+pet_b2 = string_b.format(name_2, age_2, animal_2, say_2)
+print(pet_b1, "\n", pet_b2)
+string_c = "我的好朋友叫{name}，牠今年{age}歲，是隻{animal}，最愛說的話是「{say}」！"
+pet_c1 = string_c.format(name = name_1, age = age_1, animal = animal_1, say = say_1)
+pet_c2 = string_c.format(name = name_2, age = age_2, animal = animal_2, say = say_2)
+print(pet_c1, "\n", pet_c2)
+```
+
+### 字串輸入
+
+我們可以用`input( )`函式來取得讓使用者輸入的字串，該函式所用的引數（餵給該函式的東西），一般是提示使用者輸入的話語，舉例如下：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+name = input("請輸入您寵物的名字：")
+age = input("請輸入您寵物的年紀：")
+animal = input("請輸入您寵物是哪種動物：")
+say = input("請輸入您寵物的叫聲：")
+print(string_a.format(name, age, animal, say))
+```
+
+### 字串的分拆和結合
+
+前面學過的字串方法不包括字串的拆分和結合，我們先學拆分，`split( )`方法的作用是將整個字串在每個空白或指定字符處切開成串列中的各個元素。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+ppap = "Pen Pineapple Apple Pen"
+ppap_splitted = ppap.split()
+print(ppap, "\n", ppap_splitted)
+pet_a1_splitted = pet_a1.split("，")
+print(pet_a1_splitted)
+```
+
+結合的話則用`join( )`方法，因為它是一個字串方法而不是串列方法，所以是「間隔字串.join(串列)」而不能反過來操作。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+ppap_joined = "~".join(ppap_splitted)
+print(ppap_joined)
+pet_a1_joined = "！".join(pet_a1_splitted)
+print(pet_a1_joined)
+```
+
+## 查找變項型別及其方法
+
+變項越弄越多，要知道哪個變項是什麼型別什麼內容，使用spyder可直接觀察右上區塊的「Variable explorer」，直接在該窗頁查找即可，畫面如下：
+`r knitr::include_graphics("./img/20200605_spyder_varexp.png")`
+
+要看環境中有哪些變項，以及各個變項有哪些方法，可使用`dir( )`函式：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+print(dir( )) # 查看環境中的變項。
+print(dir(ppap)) # 查看ppap這個字串變項有哪些方法。
+print(dir(ppap_splitted)) # 查看ppap_splitted這個串列變項有哪些方法。
+```
+
+
+
+
+## 學習要點
+
+
+1. 明白如何使用`range( )`建構範圍物件。
+1. 明白如何使用字串的`format( )`方法來改變格式，並且會用`input( )`函式來取得使用者的輸入值，能夠運用字串的拆分`split( )`與結合`join( )`方法。
+1. 知道如何在spyder中查看物件型別及其內容，知道如何找到特定物件可用哪些方法。
+1. 假設序列s和序列t是相同型別，n、i、j、k是整數，x是序列可接受的元素，序列可用方法列示如下：
+
+```{r seq_op, echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
+"./tbl/sheets.xlsx" %>% 
+  readxl::read_excel(sheet = "SeqOp", col_types = "text") %>% 
+  knitr::kable()
+```
+
+
+
+## 自我練習
+
+1. 打開Jupyter或Spyder。
+1. 自己建構一些範圍，列出長度、展開內容，看看與自己的預期是否相同。
+1. 自己建構一些字串，嘗試不同格式調整，善用輸入功能，改變列出結果。
+1. 使用可變的串列建構一些例子，應用前面表格中的每種序列方法，至少都試過三次，
+1. 查找自己建構的物件有哪些方法，還有哪些是沒有學過的，善用幫助`help( )`嘗試尋找其使用方式，動作試著使用看看。
+
+
+
