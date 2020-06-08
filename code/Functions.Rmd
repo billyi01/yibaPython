@@ -9,3 +9,146 @@ reticulate::use_python(readLines("./../../envar/pypath"))
 
 
 ## 何謂函式
+
+我們已經學過好多函式了，例如一開始的`print( )`、`help( )`，再來如求取長度的`len( )`、找最大值的`max( )`、找最小值的`min( )`、計算總和的`sum( )`等，都是函式，有些函式附屬在某類型別的物件上，又稱為方法，如之前學過字串物件的方法有`upper( )`、`lower( )`或串列物件的方法有`append( )`、`extend( )`等。
+
+## 為何需要函式
+
+假設我們想讓電腦說一句話，可以這樣：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+print("Hi, there")
+```
+
+如果我們要讓電腦說同一句話三次，可以這樣：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+print("Hi, there")
+print("Hi, there")
+print("Hi, there")
+```
+
+但如果同一句話要說十次、百次、千次、萬次怎麼辦呢？這時除了可以利用迴圈之外，主要利用函式是用來執行某些重複動作，還可以依據每次執行的需要，變更執行內容。
+
+## 函式建構
+
+### 無輸入值
+
+承上，例如我們先用一個函式讓電腦同一句話說三次，用def來定義函式，後接函式名稱與小括弧，冒號之後的次一層級代碼區塊要齊頭縮排：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+def sayhi(): # 利用def來定義函式。
+    for i in range(3):
+        print("Hi, there")    
+    
+sayhi()    
+```
+
+### 有輸入值，但無輸入預設值
+
+承上，如果我們要讓同一句話說n次，假設n是2次的話，可以這樣：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+def sayhi(n): # 這利用n代表次數，可讓使用者輸入。
+    for i in range(n):
+        print("Hi, there")    
+    
+sayhi(2)    
+```
+
+
+如果使用者不輸入n的話，發生錯誤：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+sayhi()    
+```
+
+### 有輸入值，也有輸入預設值
+
+我們可以為輸入值安排預設值，當無輸入值時仍可以運作，下例n之預設值為1次：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+def sayhi(n = 1):
+    for i in range(n):
+        print("Hi, there")    
+    
+sayhi() # 沒有輸入值，n預設為1，只列出一次。    
+```
+
+承上，如果我們鰾讓同一句話對某人someone說n次，假設n是3次，某人名字是John的話，兩者都有預設值，可以這樣：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+def sayhi(n = 1, someone = "my friend"): 
+    for i in range(n):
+        print("Hi, {}".format(someone))    
+    
+sayhi(3, "John")
+sayhi() # n預設為一次，someone預設為"my friend"。
+```
+
+這樣使用函式（或物件的方法）是不是比單純的迴圈靈活很多啊！
+
+
+## 函式建構範例
+
+找出一段文字中的每一單字出現次數，輸入為一個長的字串，輸出為一個字典，其鍵為各單字、值為該單字出現次數。打算要輸入的字串如下：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+# 每一橫排最後的反斜線「\」代表接續至下一橫排的意思。
+zen = "Beautiful is better than ugly.\
+    Explicit is better than implicit.\
+    Simple is better than complex.\
+    Complex is better than complicated.\
+    Flat is better than nested.\
+    Sparse is better than dense.\
+    Readability counts.\
+    Special cases aren't special enough to break the rules.\
+    Although practicality beats purity.\
+    Errors should never pass silently.\
+    Unless explicitly silenced.\
+    In the face of ambiguity, refuse the temptation to guess.\
+    There should be one-- and preferably only one --obvious way to do it.\
+    Although that way may not be obvious at first unless you're Dutch.\
+    Now is better than never.\
+    Although never is often better than *right* now.\
+    If the implementation is hard to explain, it's a bad idea.\
+    If the implementation is easy to explain, it may be a good idea.\
+    Namespaces are one honking great idea -- let's do more of those!"
+print(zen)
+```
+
+
+我們先嘗試將字串拆分為單字組成的串列：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+# 整理字串內容以移除特殊符號，全部改成小寫後，拆分為單字串列。
+zen = zen.replace(".", " ") # 移除句點。
+zen = zen.replace(",", " ") # 移除逗點。
+zen = zen.replace("-", " ") # 移除減號。
+zen = zen.replace("'", "") # 移除撇號。
+zen = zen.replace("*", "") # 移除星號。
+zen = zen.lower().split() # 改成小寫，拆分成為串列。
+print(zen) # 列出串列查看。
+```
+
+再來建構所需函式內容：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+
+def word_freq(word_list): 
+    
+    if word_list is None: # 如果輸入值為空無。
+        return None # 回報值為空無。
+        
+    else: # 如果輸入值不是空無。
+        out = {} # 建構一預備輸出的空字典。
+    
+        for word in word_list:
+            if word in out: # 如果該單字已在字典中。
+                out[word] = out[word] + 1 # 該單字對應的值加一。
+            else: # 如果該單字不在字典中
+                out[word] = 1 # 該單字對應的值為一。
+        return out
+```
+
+執行函式查看結果：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+out_dict = word_freq(zen)
+print(out_dict)
+```
+
+這樣的結果，沒有依照單字出現次數由多到少排列，我們接著調整一下結果，改為鍵值對的元組的串列，其值由大至小排列：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+out_list = sorted(out_dict.items(), key = lambda d: d[1], reverse = True) # 依元組中值的大小降冪排列。
+print(out_list)
+```

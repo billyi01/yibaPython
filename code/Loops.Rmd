@@ -9,3 +9,219 @@ reticulate::use_python(readLines("./../../envar/pypath"))
 
 
 ## 何謂迴圈
+
+迴圈是一段在程式中只出現一次，但可能會連續執行多次的程式碼。迴圈中的程式碼會執行特定的次數，或者是執行到特定條件成立時結束迴圈，或者是針對某一彙集中的所有項目都執行一次。
+
+## for迴圈
+
+### for... 陳述
+
+for常接一個變項，該變項會依序指涉序列或彙集內之項目，如下例range(5)可展開為0, 1, 2, 3, 4五個元素，變項i會依序指涉這幾個元素。注意：迴圈內的次一層級代碼區塊，要齊頭縮排，否則會發生錯誤。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+for i in range(5):
+    print(i)
+```
+
+以下例子會依序列出字串、串列、字典內之項目。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+seasons_string = "春夏秋冬"
+for c in seasons_string:
+    print(c)
+seasons_list = ["春", "夏", "秋", "冬"]
+for s in seasons_list:
+    print(s)
+seasons_dict = {"spring": "春", "summer": "夏", "autumn": "秋", "winter": "冬"}
+for k, v in seasons_dict.items():
+    print(k, v)
+```
+
+
+
+迴圈最大的好處就是可以簡化代碼，試想要將一個內含多個整數元數的串列，求其內含元素的和，我們可以有幾種寫法：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+nums = list(range(1, 6)) # 內容為從一到五的整數。
+print(nums) 
+sum_1 = nums[0] + nums[1] + nums[2] + nums[3] + nums[4] # 索引值為0至4
+print(sum_1)
+sum_2 = 0
+for i in range(len(nums)): # 索引從零開始。
+    sum_2 = sum_2 + nums[i]
+print(sum_2)
+sum_3 = 0
+for num in nums:
+    sum_3 = sum_3 + num
+print(sum_3)
+sum_4 = sum(nums)
+print(sum_4)
+```
+
+以上第一個方法，利用每個位置索引取出串列中的每個項目，以多個算術運算加號逐個相加，如果串列中的項目很多，這個方法就不實用了。
+
+以上第二個方法，在還沒計算之前先設定總和變項為零，同樣利用每個位置索引取出串列中的每個項目，但用for逐次執行將每個索引位置的值加到總和變項中，即便串列中元素很多，只要很少代碼就能得到答案。
+
+以上第三個方法，同樣在還沒計算之前先設定總和變項為零，利用for直接逐次取出每個項目，不用索引，寫法更簡潔。
+
+以上第四個方法，直接使用內建函式`sum( )`為串列中項目加總，這是最簡潔的，但它比較不容易處理以下帶有較複雜條件的情形。
+
+
+### for... if... break 陳述
+
+有時迴圈執行到某些條件想要跳出該次迴圈「不再執行該迴圈剩下的部分」，可以加上 if... break 陳述，上例如果我們遇到項目值為4就跳出不再列出後續項目值，可以這樣寫：
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+for num in nums:
+    if num == 4:
+        break
+    print(num)
+
+```
+
+### for... if... continue 陳述
+
+有時迴圈執行到某些條件想要跳出該次迴圈「但要執行該迴圈剩下的部分」，可以加上 if... continue 陳述，上例如果我們遇到項目值為4就跳出但要列出後續項目值，可以這樣寫：
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+for num in nums:
+    if num == 4:
+        continue
+    print(num)
+
+```
+
+
+## while迴圈
+
+### while... 陳述
+
+while後帶有邏輯運算式，當結果為真時執行其下一層級的代碼區塊，直至條件為假則停止執行。所有能使用for迴圈的都能改寫為while迴圈，但不是每個while迴圈都能改寫為for迴圈。
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+i = 0
+while i < len(nums):
+    print(nums[i])
+    i = i + 1 # 即 i += 1
+
+```
+
+
+### while... if... break 陳述
+
+有時迴圈執行到某些條件想要跳出該次迴圈「不再執行該迴圈剩下的部分」，可以加上 if... break 陳述，上例如果我們遇到項目值為4就跳出不再列出後續項目值，可以這樣寫：
+
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+i = 0
+while i < len(nums):
+    if nums[i] == 4:
+        i = i + 1 
+        break
+    print(nums[i])
+    i = i + 1 
+
+```
+
+
+### while... if... continue 陳述
+
+有時迴圈執行到某些條件想要跳出該次迴圈「但要執行該迴圈剩下的部分」，可以加上 if... continue 陳述，上例如果我們遇到項目值為4就跳出但要列出後續項目值，可以這樣寫：
+
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+i = 0
+while i < len(nums):
+    if nums[i] == 4:
+        i = i + 1
+        continue
+    print(nums[i])
+    i = i + 1
+```
+
+
+
+## 應用情境（迴圈）
+
++ 製作一份九九乘法表。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+nums =list(range(1, 10))
+
+for i in nums:
+    for j in nums:
+        print("{i} * {j} = {k}".format(i = i, j = j, k = i * j))
+
+```
+
++ 有一個串列內含整數一至十，請將該串列中項目為奇數者放在一個新的串列，項目為偶數者放在另一個新的串列，並分別列出這二個新的串列。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+nums =list(range(1, 11))
+odd = []
+even = []
+while len(nums) > 0:
+    num = nums.pop(0)
+    if num % 2 == 0:
+        even.append(num)
+    else:
+        odd.append(num)
+print(odd)
+print(even)
+```
+
+## 推衍（comprehension）
+
+我們之前學了串列（list）和字典（dictionary），也學了for、if陳述，現在我們可以利用它們來建構推衍。
+
+### 串列推衍（list comprehension）
+
+以一個既有的整數串列為基礎，建構一個新的串列，其中每個項目是既有串列項目加一：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+nums =list(range(1, 11))
+print(nums)
+newlist_1 = [x + 1 for x in nums]
+print(newlist_1)
+```
+
+以一個既有的整數串列為基礎，建構一個新的串列，其中每個項目是既有串列項目平方：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+newlist_2 = [x ** 2 for x in nums]
+print(newlist_2)
+```
+
+同上，但只要既有串列項目是奇數的平方項目：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+newlist_3 = [x ** 2 for x in nums if x % 2 != 0]
+print(newlist_3)
+```
+
+同上，但限制新串列的項目是偶數：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+newlist_4 = [x ** 2 for x in nums if x ** 2 % 2 == 0]
+print(newlist_4)
+```
+
+### 字典推衍（dictionary comprehension）
+
+以一個既有的整數串列為基礎，建構一個新的字典，鍵用原串列項目，值用原串列項目的平方：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+nums =list(range(1, 6))
+print(nums)
+newdict_1 = {x:x**2 for x in nums}
+print(newdict_1)
+```
+
+以一個既有的字串串列為基礎，排除原串列部分項目，建構一個新的字典，鍵用原串列項目，值用原串列項目的字串長度：
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+foods = ["apple", "banana", "cherry", "noodle", "rice"]
+newdict_2 = {f:len(f) for f in foods if (f != "noodle" and f != "rice")}
+print(newdict_2)
+```
+
+## 學習要點
+
+1. 瞭解for...、for... if... break...、for... if... continue...的用法。
+1. 瞭解while...、while... if... break...、while... if... continue...的用法。
+1. 瞭解串列推衍（list comprehension）的用法。
+1. 瞭解字典推衍（dictionary comprehension）的用法。
+
+
+
+
+
+
