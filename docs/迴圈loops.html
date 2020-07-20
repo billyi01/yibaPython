@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1 Anaconda發行 | YiBaPython</title>
-  <meta name="description" content="1 Anaconda發行 | YiBaPython" />
+  <title>8 迴圈（Loops） | YiBaPython</title>
+  <meta name="description" content="8 迴圈（Loops） | YiBaPython" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1 Anaconda發行 | YiBaPython" />
+  <meta property="og:title" content="8 迴圈（Loops） | YiBaPython" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 Anaconda發行 | YiBaPython" />
+  <meta name="twitter:title" content="8 迴圈（Loops） | YiBaPython" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="哈囉世界hello-world.html"/>
+<link rel="prev" href="條件陳述conditional-statements.html"/>
+<link rel="next" href="函式functions.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -314,85 +314,296 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="anaconda發行" class="section level1">
-<h1><span class="header-section-number">1</span> Anaconda發行</h1>
-<div id="何謂anaconda" class="section level2">
-<h2><span class="header-section-number">1.1</span> 何謂Anaconda</h2>
-<p>開源軟件常有不同模組套件間的相互依賴（interdependence）等問題，因此有人就將較為相容者整理為某個發行（distribution），例如<a href="https://www.linux.org/">Linux</a>就有Ubuntu、Debian、CentOS、Fedora等發行，而<a href="https://www.python.org/">Python</a>一樣也有多個發行，其中一個常見的就是<a href="https://www.anaconda.com/">Anaconda</a>。</p>
+<div id="迴圈loops" class="section level1">
+<h1><span class="header-section-number">8</span> 迴圈（Loops）</h1>
+<div id="何謂迴圈" class="section level2">
+<h2><span class="header-section-number">8.1</span> 何謂迴圈</h2>
+<p>迴圈是一段在程式中只出現一次，但可能會連續執行多次的程式碼。迴圈中的程式碼會執行特定的次數，或者是執行到特定條件成立時結束迴圈，或者是針對某一彙集中的所有項目都執行一次。</p>
 </div>
-<div id="anaconda安裝" class="section level2">
-<h2><span class="header-section-number">1.2</span> Anaconda安裝</h2>
-<p>這在網上已有很多說明，此處列舉幾個供參，基本上照著做就可以了：</p>
+<div id="for迴圈" class="section level2">
+<h2><span class="header-section-number">8.2</span> for迴圈</h2>
+<div id="for-陳述" class="section level3">
+<h3><span class="header-section-number">8.2.1</span> for… 陳述</h3>
+<p>for常接一個變項，該變項會依序指涉序列或彙集內之項目，如下例range(5)可展開為0, 1, 2, 3, 4五個元素，變項i會依序指涉這幾個元素。注意：迴圈內的次一層級代碼區塊，要齊頭縮排，否則會發生錯誤。</p>
+<div class="sourceCode" id="cb418"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb418-1"><a href="迴圈loops.html#cb418-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb418-2"><a href="迴圈loops.html#cb418-2"></a>    <span class="bu">print</span>(i)</span></code></pre></div>
+<pre><code>## 0
+## 1
+## 2
+## 3
+## 4</code></pre>
+<p>以下例子會依序列出字串、串列、字典內之項目。</p>
+<div class="sourceCode" id="cb420"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb420-1"><a href="迴圈loops.html#cb420-1"></a>seasons_string <span class="op">=</span> <span class="st">&quot;春夏秋冬&quot;</span></span>
+<span id="cb420-2"><a href="迴圈loops.html#cb420-2"></a><span class="cf">for</span> c <span class="kw">in</span> seasons_string:</span>
+<span id="cb420-3"><a href="迴圈loops.html#cb420-3"></a>    <span class="bu">print</span>(c)</span></code></pre></div>
+<pre><code>## 春
+## 夏
+## 秋
+## 冬</code></pre>
+<div class="sourceCode" id="cb422"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb422-1"><a href="迴圈loops.html#cb422-1"></a>seasons_list <span class="op">=</span> [<span class="st">&quot;春&quot;</span>, <span class="st">&quot;夏&quot;</span>, <span class="st">&quot;秋&quot;</span>, <span class="st">&quot;冬&quot;</span>]</span>
+<span id="cb422-2"><a href="迴圈loops.html#cb422-2"></a><span class="cf">for</span> s <span class="kw">in</span> seasons_list:</span>
+<span id="cb422-3"><a href="迴圈loops.html#cb422-3"></a>    <span class="bu">print</span>(s)</span></code></pre></div>
+<pre><code>## 春
+## 夏
+## 秋
+## 冬</code></pre>
+<div class="sourceCode" id="cb424"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb424-1"><a href="迴圈loops.html#cb424-1"></a>seasons_dict <span class="op">=</span> {<span class="st">&quot;spring&quot;</span>: <span class="st">&quot;春&quot;</span>, <span class="st">&quot;summer&quot;</span>: <span class="st">&quot;夏&quot;</span>, <span class="st">&quot;autumn&quot;</span>: <span class="st">&quot;秋&quot;</span>, <span class="st">&quot;winter&quot;</span>: <span class="st">&quot;冬&quot;</span>}</span>
+<span id="cb424-2"><a href="迴圈loops.html#cb424-2"></a><span class="cf">for</span> k, v <span class="kw">in</span> seasons_dict.items():</span>
+<span id="cb424-3"><a href="迴圈loops.html#cb424-3"></a>    <span class="bu">print</span>(k, v)</span></code></pre></div>
+<pre><code>## spring 春
+## summer 夏
+## autumn 秋
+## winter 冬</code></pre>
+<p>迴圈最大的好處就是可以簡化代碼，試想要將一個內含多個整數元數的串列，求其內含元素的和，我們可以有幾種寫法：</p>
+<div class="sourceCode" id="cb426"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb426-1"><a href="迴圈loops.html#cb426-1"></a>nums <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>)) <span class="co"># 內容為從一到五的整數。</span></span>
+<span id="cb426-2"><a href="迴圈loops.html#cb426-2"></a><span class="bu">print</span>(nums) </span></code></pre></div>
+<pre><code>## [1, 2, 3, 4, 5]</code></pre>
+<div class="sourceCode" id="cb428"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb428-1"><a href="迴圈loops.html#cb428-1"></a>sum_1 <span class="op">=</span> nums[<span class="dv">0</span>] <span class="op">+</span> nums[<span class="dv">1</span>] <span class="op">+</span> nums[<span class="dv">2</span>] <span class="op">+</span> nums[<span class="dv">3</span>] <span class="op">+</span> nums[<span class="dv">4</span>] <span class="co"># 索引值為0至4</span></span>
+<span id="cb428-2"><a href="迴圈loops.html#cb428-2"></a><span class="bu">print</span>(sum_1)</span></code></pre></div>
+<pre><code>## 15</code></pre>
+<div class="sourceCode" id="cb430"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb430-1"><a href="迴圈loops.html#cb430-1"></a>sum_2 <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb430-2"><a href="迴圈loops.html#cb430-2"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(nums)): <span class="co"># 索引從零開始。</span></span>
+<span id="cb430-3"><a href="迴圈loops.html#cb430-3"></a>    sum_2 <span class="op">=</span> sum_2 <span class="op">+</span> nums[i]</span>
+<span id="cb430-4"><a href="迴圈loops.html#cb430-4"></a><span class="bu">print</span>(sum_2)</span></code></pre></div>
+<pre><code>## 15</code></pre>
+<div class="sourceCode" id="cb432"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb432-1"><a href="迴圈loops.html#cb432-1"></a>sum_3 <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb432-2"><a href="迴圈loops.html#cb432-2"></a><span class="cf">for</span> num <span class="kw">in</span> nums:</span>
+<span id="cb432-3"><a href="迴圈loops.html#cb432-3"></a>    sum_3 <span class="op">=</span> sum_3 <span class="op">+</span> num</span>
+<span id="cb432-4"><a href="迴圈loops.html#cb432-4"></a><span class="bu">print</span>(sum_3)</span></code></pre></div>
+<pre><code>## 15</code></pre>
+<div class="sourceCode" id="cb434"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb434-1"><a href="迴圈loops.html#cb434-1"></a>sum_4 <span class="op">=</span> <span class="bu">sum</span>(nums)</span>
+<span id="cb434-2"><a href="迴圈loops.html#cb434-2"></a><span class="bu">print</span>(sum_4)</span></code></pre></div>
+<pre><code>## 15</code></pre>
+<p>以上第一個方法，利用每個位置索引取出串列中的每個項目，以多個算術運算加號逐個相加，如果串列中的項目很多，這個方法就不實用了。</p>
+<p>以上第二個方法，在還沒計算之前先設定總和變項為零，同樣利用每個位置索引取出串列中的每個項目，但用for逐次執行將每個索引位置的值加到總和變項中，即便串列中元素很多，只要很少代碼就能得到答案。</p>
+<p>以上第三個方法，同樣在還沒計算之前先設定總和變項為零，利用for直接逐次取出每個項目，不用索引，寫法更簡潔。</p>
+<p>以上第四個方法，直接使用內建函式<code>sum( )</code>為串列中項目加總，這是最簡潔的，但它比較不容易處理以下帶有較複雜條件的情形。</p>
+</div>
+<div id="for-if-break-陳述" class="section level3">
+<h3><span class="header-section-number">8.2.2</span> for… if… break 陳述</h3>
+<p>有時迴圈執行到某些條件想要跳出該次迴圈「不再執行該迴圈剩下的部分」，可以加上 if… break 陳述，上例如果我們遇到項目值為4就跳出不再列出後續項目值，可以這樣寫：</p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb436-1"><a href="迴圈loops.html#cb436-1"></a><span class="cf">for</span> num <span class="kw">in</span> nums:</span>
+<span id="cb436-2"><a href="迴圈loops.html#cb436-2"></a>    <span class="cf">if</span> num <span class="op">==</span> <span class="dv">4</span>:</span>
+<span id="cb436-3"><a href="迴圈loops.html#cb436-3"></a>        <span class="cf">break</span></span>
+<span id="cb436-4"><a href="迴圈loops.html#cb436-4"></a>    <span class="bu">print</span>(num)</span></code></pre></div>
+<pre><code>## 1
+## 2
+## 3</code></pre>
+</div>
+<div id="for-if-continue-陳述" class="section level3">
+<h3><span class="header-section-number">8.2.3</span> for… if… continue 陳述</h3>
+<p>有時迴圈執行到某些條件想要跳出該次迴圈「但要執行該迴圈剩下的部分」，可以加上 if… continue 陳述，上例如果我們遇到項目值為4就跳出但要列出後續項目值，可以這樣寫：</p>
+<div class="sourceCode" id="cb438"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb438-1"><a href="迴圈loops.html#cb438-1"></a><span class="cf">for</span> num <span class="kw">in</span> nums:</span>
+<span id="cb438-2"><a href="迴圈loops.html#cb438-2"></a>    <span class="cf">if</span> num <span class="op">==</span> <span class="dv">4</span>:</span>
+<span id="cb438-3"><a href="迴圈loops.html#cb438-3"></a>        <span class="cf">continue</span></span>
+<span id="cb438-4"><a href="迴圈loops.html#cb438-4"></a>    <span class="bu">print</span>(num)</span></code></pre></div>
+<pre><code>## 1
+## 2
+## 3
+## 5</code></pre>
+</div>
+</div>
+<div id="while迴圈" class="section level2">
+<h2><span class="header-section-number">8.3</span> while迴圈</h2>
+<div id="while-陳述" class="section level3">
+<h3><span class="header-section-number">8.3.1</span> while… 陳述</h3>
+<p>while後帶有邏輯運算式，當結果為真時執行其下一層級的代碼區塊，直至條件為假則停止執行。所有能使用for迴圈的都能改寫為while迴圈，但不是每個while迴圈都能改寫為for迴圈。</p>
+<div class="sourceCode" id="cb440"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb440-1"><a href="迴圈loops.html#cb440-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb440-2"><a href="迴圈loops.html#cb440-2"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="bu">len</span>(nums):</span>
+<span id="cb440-3"><a href="迴圈loops.html#cb440-3"></a>    <span class="bu">print</span>(nums[i])</span>
+<span id="cb440-4"><a href="迴圈loops.html#cb440-4"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span> <span class="co"># 即 i += 1</span></span></code></pre></div>
+<pre><code>## 1
+## 2
+## 3
+## 4
+## 5</code></pre>
+</div>
+<div id="while-if-break-陳述" class="section level3">
+<h3><span class="header-section-number">8.3.2</span> while… if… break 陳述</h3>
+<p>有時迴圈執行到某些條件想要跳出該次迴圈「不再執行該迴圈剩下的部分」，可以加上 if… break 陳述，上例如果我們遇到項目值為4就跳出不再列出後續項目值，可以這樣寫：</p>
+<div class="sourceCode" id="cb442"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb442-1"><a href="迴圈loops.html#cb442-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb442-2"><a href="迴圈loops.html#cb442-2"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="bu">len</span>(nums):</span>
+<span id="cb442-3"><a href="迴圈loops.html#cb442-3"></a>    <span class="cf">if</span> nums[i] <span class="op">==</span> <span class="dv">4</span>:</span>
+<span id="cb442-4"><a href="迴圈loops.html#cb442-4"></a>        i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span> </span>
+<span id="cb442-5"><a href="迴圈loops.html#cb442-5"></a>        <span class="cf">break</span></span>
+<span id="cb442-6"><a href="迴圈loops.html#cb442-6"></a>    <span class="bu">print</span>(nums[i])</span>
+<span id="cb442-7"><a href="迴圈loops.html#cb442-7"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span> </span></code></pre></div>
+<pre><code>## 1
+## 2
+## 3</code></pre>
+</div>
+<div id="while-if-continue-陳述" class="section level3">
+<h3><span class="header-section-number">8.3.3</span> while… if… continue 陳述</h3>
+<p>有時迴圈執行到某些條件想要跳出該次迴圈「但要執行該迴圈剩下的部分」，可以加上 if… continue 陳述，上例如果我們遇到項目值為4就跳出但要列出後續項目值，可以這樣寫：</p>
+<div class="sourceCode" id="cb444"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb444-1"><a href="迴圈loops.html#cb444-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb444-2"><a href="迴圈loops.html#cb444-2"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="bu">len</span>(nums):</span>
+<span id="cb444-3"><a href="迴圈loops.html#cb444-3"></a>    <span class="cf">if</span> nums[i] <span class="op">==</span> <span class="dv">4</span>:</span>
+<span id="cb444-4"><a href="迴圈loops.html#cb444-4"></a>        i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb444-5"><a href="迴圈loops.html#cb444-5"></a>        <span class="cf">continue</span></span>
+<span id="cb444-6"><a href="迴圈loops.html#cb444-6"></a>    <span class="bu">print</span>(nums[i])</span>
+<span id="cb444-7"><a href="迴圈loops.html#cb444-7"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span></code></pre></div>
+<pre><code>## 1
+## 2
+## 3
+## 5</code></pre>
+</div>
+</div>
+<div id="應用情境迴圈" class="section level2">
+<h2><span class="header-section-number">8.4</span> 應用情境（迴圈）</h2>
 <ul>
-<li><a href="https://ithelp.ithome.com.tw/articles/10229662">Windows10 安裝 Anaconda 環境</a></li>
-<li><a href="https://www.woodowlab.com/python-tutorial-0-anaconda/">Python教學第0章-Anaconda 完整安裝教學及搭建 vscode 開發環境</a></li>
-<li><a href="https://learnexp.tw/%E3%80%90python%E3%80%91windows%E7%92%B0%E5%A2%83-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8%EF%BC%88anaconda%EF%BC%89%E5%BE%9E0%E5%88%B01/">Windows環境 安裝教學（Anaconda）從0到1</a></li>
-<li><a href="https://medium.com/python4u/anaconda%E4%BB%8B%E7%B4%B9%E5%8F%8A%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8-f7dae6454ab6">Anaconda介紹及安裝教學</a></li>
-<li><a href="https://michaelchen.tech/blog/anaconda-primer/">Anaconda 簡易入門</a></li>
+<li>製作一份九九乘法表。</li>
 </ul>
+<div class="sourceCode" id="cb446"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb446-1"><a href="迴圈loops.html#cb446-1"></a>nums <span class="op">=</span><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">10</span>))</span>
+<span id="cb446-2"><a href="迴圈loops.html#cb446-2"></a></span>
+<span id="cb446-3"><a href="迴圈loops.html#cb446-3"></a><span class="cf">for</span> i <span class="kw">in</span> nums:</span>
+<span id="cb446-4"><a href="迴圈loops.html#cb446-4"></a>    <span class="cf">for</span> j <span class="kw">in</span> nums:</span>
+<span id="cb446-5"><a href="迴圈loops.html#cb446-5"></a>        <span class="bu">print</span>(<span class="st">&quot;</span><span class="sc">{i}</span><span class="st"> * </span><span class="sc">{j}</span><span class="st"> = </span><span class="sc">{k}</span><span class="st">&quot;</span>.<span class="bu">format</span>(i <span class="op">=</span> i, j <span class="op">=</span> j, k <span class="op">=</span> i <span class="op">*</span> j))</span></code></pre></div>
+<pre><code>## 1 * 1 = 1
+## 1 * 2 = 2
+## 1 * 3 = 3
+## 1 * 4 = 4
+## 1 * 5 = 5
+## 1 * 6 = 6
+## 1 * 7 = 7
+## 1 * 8 = 8
+## 1 * 9 = 9
+## 2 * 1 = 2
+## 2 * 2 = 4
+## 2 * 3 = 6
+## 2 * 4 = 8
+## 2 * 5 = 10
+## 2 * 6 = 12
+## 2 * 7 = 14
+## 2 * 8 = 16
+## 2 * 9 = 18
+## 3 * 1 = 3
+## 3 * 2 = 6
+## 3 * 3 = 9
+## 3 * 4 = 12
+## 3 * 5 = 15
+## 3 * 6 = 18
+## 3 * 7 = 21
+## 3 * 8 = 24
+## 3 * 9 = 27
+## 4 * 1 = 4
+## 4 * 2 = 8
+## 4 * 3 = 12
+## 4 * 4 = 16
+## 4 * 5 = 20
+## 4 * 6 = 24
+## 4 * 7 = 28
+## 4 * 8 = 32
+## 4 * 9 = 36
+## 5 * 1 = 5
+## 5 * 2 = 10
+## 5 * 3 = 15
+## 5 * 4 = 20
+## 5 * 5 = 25
+## 5 * 6 = 30
+## 5 * 7 = 35
+## 5 * 8 = 40
+## 5 * 9 = 45
+## 6 * 1 = 6
+## 6 * 2 = 12
+## 6 * 3 = 18
+## 6 * 4 = 24
+## 6 * 5 = 30
+## 6 * 6 = 36
+## 6 * 7 = 42
+## 6 * 8 = 48
+## 6 * 9 = 54
+## 7 * 1 = 7
+## 7 * 2 = 14
+## 7 * 3 = 21
+## 7 * 4 = 28
+## 7 * 5 = 35
+## 7 * 6 = 42
+## 7 * 7 = 49
+## 7 * 8 = 56
+## 7 * 9 = 63
+## 8 * 1 = 8
+## 8 * 2 = 16
+## 8 * 3 = 24
+## 8 * 4 = 32
+## 8 * 5 = 40
+## 8 * 6 = 48
+## 8 * 7 = 56
+## 8 * 8 = 64
+## 8 * 9 = 72
+## 9 * 1 = 9
+## 9 * 2 = 18
+## 9 * 3 = 27
+## 9 * 4 = 36
+## 9 * 5 = 45
+## 9 * 6 = 54
+## 9 * 7 = 63
+## 9 * 8 = 72
+## 9 * 9 = 81</code></pre>
+<ul>
+<li>有一個串列內含整數一至十，請將該串列中項目為奇數者放在一個新的串列，項目為偶數者放在另一個新的串列，並分別列出這二個新的串列。</li>
+</ul>
+<div class="sourceCode" id="cb448"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb448-1"><a href="迴圈loops.html#cb448-1"></a>nums <span class="op">=</span><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>))</span>
+<span id="cb448-2"><a href="迴圈loops.html#cb448-2"></a>odd <span class="op">=</span> []</span>
+<span id="cb448-3"><a href="迴圈loops.html#cb448-3"></a>even <span class="op">=</span> []</span>
+<span id="cb448-4"><a href="迴圈loops.html#cb448-4"></a><span class="cf">while</span> <span class="bu">len</span>(nums) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb448-5"><a href="迴圈loops.html#cb448-5"></a>    num <span class="op">=</span> nums.pop(<span class="dv">0</span>)</span>
+<span id="cb448-6"><a href="迴圈loops.html#cb448-6"></a>    <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb448-7"><a href="迴圈loops.html#cb448-7"></a>        even.append(num)</span>
+<span id="cb448-8"><a href="迴圈loops.html#cb448-8"></a>    <span class="cf">else</span>:</span>
+<span id="cb448-9"><a href="迴圈loops.html#cb448-9"></a>        odd.append(num)</span>
+<span id="cb448-10"><a href="迴圈loops.html#cb448-10"></a><span class="bu">print</span>(odd)</span></code></pre></div>
+<pre><code>## [1, 3, 5, 7, 9]</code></pre>
+<div class="sourceCode" id="cb450"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb450-1"><a href="迴圈loops.html#cb450-1"></a><span class="bu">print</span>(even)</span></code></pre></div>
+<pre><code>## [2, 4, 6, 8, 10]</code></pre>
 </div>
-<div id="jupyter" class="section level2">
-<h2><span class="header-section-number">1.3</span> Jupyter</h2>
-<div id="何謂jupyter" class="section level3">
-<h3><span class="header-section-number">1.3.1</span> 何謂Jupyter</h3>
-<p><a href="https://jupyter.org/">Jupyter</a>是一種互動式記事本（interactive notebook），使用它可以立即得到（互動）操作結果。</p>
+<div id="推衍comprehension" class="section level2">
+<h2><span class="header-section-number">8.5</span> 推衍（comprehension）</h2>
+<p>我們之前學了串列（list）和字典（dictionary），也學了for、if陳述，現在我們可以利用它們來建構推衍。</p>
+<div id="串列推衍list-comprehension" class="section level3">
+<h3><span class="header-section-number">8.5.1</span> 串列推衍（list comprehension）</h3>
+<p>以一個既有的整數串列為基礎，建構一個新的串列，其中每個項目是既有串列項目加一：</p>
+<div class="sourceCode" id="cb452"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb452-1"><a href="迴圈loops.html#cb452-1"></a>nums <span class="op">=</span><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>))</span>
+<span id="cb452-2"><a href="迴圈loops.html#cb452-2"></a><span class="bu">print</span>(nums)</span></code></pre></div>
+<pre><code>## [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code></pre>
+<div class="sourceCode" id="cb454"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb454-1"><a href="迴圈loops.html#cb454-1"></a>newlist_1 <span class="op">=</span> [x <span class="op">+</span> <span class="dv">1</span> <span class="cf">for</span> x <span class="kw">in</span> nums]</span>
+<span id="cb454-2"><a href="迴圈loops.html#cb454-2"></a><span class="bu">print</span>(newlist_1)</span></code></pre></div>
+<pre><code>## [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]</code></pre>
+<p>以一個既有的整數串列為基礎，建構一個新的串列，其中每個項目是既有串列項目平方：</p>
+<div class="sourceCode" id="cb456"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb456-1"><a href="迴圈loops.html#cb456-1"></a>newlist_2 <span class="op">=</span> [x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> nums]</span>
+<span id="cb456-2"><a href="迴圈loops.html#cb456-2"></a><span class="bu">print</span>(newlist_2)</span></code></pre></div>
+<pre><code>## [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</code></pre>
+<p>同上，但只要既有串列項目是奇數的平方項目：</p>
+<div class="sourceCode" id="cb458"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb458-1"><a href="迴圈loops.html#cb458-1"></a>newlist_3 <span class="op">=</span> [x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> nums <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">!=</span> <span class="dv">0</span>]</span>
+<span id="cb458-2"><a href="迴圈loops.html#cb458-2"></a><span class="bu">print</span>(newlist_3)</span></code></pre></div>
+<pre><code>## [1, 9, 25, 49, 81]</code></pre>
+<p>同上，但限制新串列的項目是偶數：</p>
+<div class="sourceCode" id="cb460"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb460-1"><a href="迴圈loops.html#cb460-1"></a>newlist_4 <span class="op">=</span> [x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> nums <span class="cf">if</span> x <span class="op">**</span> <span class="dv">2</span> <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span>
+<span id="cb460-2"><a href="迴圈loops.html#cb460-2"></a><span class="bu">print</span>(newlist_4)</span></code></pre></div>
+<pre><code>## [4, 16, 36, 64, 100]</code></pre>
 </div>
-<div id="開啟jupyter" class="section level3">
-<h3><span class="header-section-number">1.3.2</span> 開啟Jupyter</h3>
-<p>此處以Windows為例：</p>
-<ol style="list-style-type: decimal">
-<li><p>開始＞Anaconda3，選取「Anaconda Navigator」或直接點擊「Jupyter Notebook」
-<img src="img/20200531_Anaconda_startup_menu.png" width="400" /></p></li>
-<li><p>如上步驟選取「Anaconda Navigator」此處再點「Jupyter Notebook」
-<img src="img/20200531_jupyter.png" width="1920" /></p></li>
-<li><p>開啟如下畫面，新增（new）一個「Python 3」的筆記
-<img src="img/20200531_jupyter_kernel.png" width="1605" /></p></li>
-<li><p>新的空白筆記畫面如下
-<img src="img/20200531_new_py3_ipynb.png" width="1607" /></p></li>
-</ol>
-</div>
-<div id="jupyter教學" class="section level3">
-<h3><span class="header-section-number">1.3.3</span> Jupyter教學</h3>
-<p>這裡找到一篇貼文<a href="https://zhuanlan.zhihu.com/p/32320214">最詳盡使用指南：超快上手 Jupyter Notebook</a>供參，如果沒能全部理解內容也沒關係，先感覺一下它大概怎麼用就行了。</p>
-</div>
-</div>
-<div id="spyder" class="section level2">
-<h2><span class="header-section-number">1.4</span> Spyder</h2>
-<div id="何謂spyder" class="section level3">
-<h3><span class="header-section-number">1.4.1</span> 何謂Spyder</h3>
-<p><a href="https://www.spyder-ide.org/">Spyder</a>是一個整合開發環境（Integrated Development Environment，IDE），使用它可以幫助瞭解物件內容。</p>
-</div>
-<div id="開啟spyder" class="section level3">
-<h3><span class="header-section-number">1.4.2</span> 開啟Spyder</h3>
-<p>此處以Windows為例：</p>
-<ol style="list-style-type: decimal">
-<li><p>開始＞Anaconda3，選取「Anaconda Navigator」或直接點擊「Spyder」
-<img src="img/20200602_Anaconda_startup_menu.png" width="392" /></p></li>
-<li><p>如上步驟選取「Anaconda Navigator」此處再點「Spyder」
-<img src="img/20200602_spyder.png" width="1920" /></p></li>
-<li><p>開啟後的畫面如下；
-<img src="img/20200602_spyder_ide.png" width="1916" /></p></li>
-</ol>
-</div>
-<div id="spyder教學" class="section level3">
-<h3><span class="header-section-number">1.4.3</span> Spyder教學</h3>
-<p>這裡找到一篇貼文<a href="https://ithelp.ithome.com.tw/articles/10212062">從零開始帶你認識spyder開發環境</a>供參，如果沒能全部理解內容也沒關係，先感覺一下它大概怎麼用就行了。</p>
+<div id="字典推衍dictionary-comprehension" class="section level3">
+<h3><span class="header-section-number">8.5.2</span> 字典推衍（dictionary comprehension）</h3>
+<p>以一個既有的整數串列為基礎，建構一個新的字典，鍵用原串列項目，值用原串列項目的平方：</p>
+<div class="sourceCode" id="cb462"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb462-1"><a href="迴圈loops.html#cb462-1"></a>nums <span class="op">=</span><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>))</span>
+<span id="cb462-2"><a href="迴圈loops.html#cb462-2"></a><span class="bu">print</span>(nums)</span></code></pre></div>
+<pre><code>## [1, 2, 3, 4, 5]</code></pre>
+<div class="sourceCode" id="cb464"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb464-1"><a href="迴圈loops.html#cb464-1"></a>newdict_1 <span class="op">=</span> {x:x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> nums}</span>
+<span id="cb464-2"><a href="迴圈loops.html#cb464-2"></a><span class="bu">print</span>(newdict_1)</span></code></pre></div>
+<pre><code>## {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}</code></pre>
+<p>以一個既有的字串串列為基礎，排除原串列部分項目，建構一個新的字典，鍵用原串列項目，值用原串列項目的字串長度：</p>
+<div class="sourceCode" id="cb466"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb466-1"><a href="迴圈loops.html#cb466-1"></a>foods <span class="op">=</span> [<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>, <span class="st">&quot;noodle&quot;</span>, <span class="st">&quot;rice&quot;</span>]</span>
+<span id="cb466-2"><a href="迴圈loops.html#cb466-2"></a>newdict_2 <span class="op">=</span> {f:<span class="bu">len</span>(f) <span class="cf">for</span> f <span class="kw">in</span> foods <span class="cf">if</span> (f <span class="op">!=</span> <span class="st">&quot;noodle&quot;</span> <span class="kw">and</span> f <span class="op">!=</span> <span class="st">&quot;rice&quot;</span>)}</span>
+<span id="cb466-3"><a href="迴圈loops.html#cb466-3"></a><span class="bu">print</span>(newdict_2)</span></code></pre></div>
+<pre><code>## {&#39;apple&#39;: 5, &#39;banana&#39;: 6, &#39;cherry&#39;: 6}</code></pre>
 </div>
 </div>
 <div id="學習要點" class="section level2">
-<h2><span class="header-section-number">1.5</span> 學習要點</h2>
+<h2><span class="header-section-number">8.6</span> 學習要點</h2>
 <ol style="list-style-type: decimal">
-<li>學會安裝Python的Anaconda發行。</li>
-<li>學會開啟Jupyter並能新增python記事本。</li>
-<li>學會開啟Spyder並能新增py腳本文件。</li>
-</ol>
-</div>
-<div id="自我練習" class="section level2">
-<h2><span class="header-section-number">1.6</span> 自我練習</h2>
-<ol style="list-style-type: decimal">
-<li>嘗試安裝Python的Anaconda發行。</li>
-<li>開啟Jupyter，新增一個python的記事本，參考前段Jupyter教學內容，操作一下玩玩看。</li>
-<li>開啟Spyer，新增一個test.py腳本文件，參考前段Spyder教學內容，瀏覽一下各窗格對應功能。</li>
+<li>瞭解for…、for… if… break…、for… if… continue…的用法。</li>
+<li>瞭解while…、while… if… break…、while… if… continue…的用法。</li>
+<li>瞭解串列推衍（list comprehension）的用法。</li>
+<li>瞭解字典推衍（dictionary comprehension）的用法。</li>
 </ol>
 
 </div>
@@ -402,8 +613,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="哈囉世界hello-world.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="條件陳述conditional-statements.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="函式functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

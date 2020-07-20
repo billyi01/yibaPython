@@ -12,4 +12,5 @@ rmd_files: [
   "Conditional_Statements.Rmd", 
   "Loops.Rmd",
   "Functions.Rmd",
-  "Modules.Rmd"]
+  "Modules.Rmd",
+  "Emails.Rmd"]

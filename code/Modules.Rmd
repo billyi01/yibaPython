@@ -9,3 +9,77 @@ reticulate::use_python(readLines("./../../envar/pypath"))
 
 
 ## 何謂模組
+
+模組就是一個python檔案，是以「.py」結尾的代碼文字檔案，可在其中定義變項、函式、類別等，把相關代碼放到同一模組，能更方便管理。
+
+
+## 模組建構
+
+因為模組就是python檔案，當我們寫了幾個函式，準備以後用在不同場合，可以先將這些函式放到一個檔案中，比如我們現在先製作幾個函式備用，再將這些函式代碼，起個檔名假設叫「mz.py」存起來，這個檔案是個模組了。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+def max_2(a, b):
+    if a > b:
+        return a
+    else:
+        return b
+
+def min_2(a, b):
+    if a < b:
+        return a
+    else:
+        return b
+
+def add_2(a, b):
+    return a + b
+    
+def sub_2(a, b):
+    return a - b
+
+def mul_2(a, b):
+    return a * b
+
+def div_2(a, b):
+    return a / b
+```
+
+
+存檔的方法可以是直接使用整合開發環境Spyder的「File > Save as」功能，輸入要存檔的名稱。也可以將以上函式直接以多排字串型別命名成變項，以下假設叫做funcs，再寫入模組中，如下：
+```{python, eval = FALSE, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = FALSE}
+with open('mz.py', 'w') as f:
+    f.write(funcs)
+```
+
+
+## 模組使用
+
+假設我們所在工作目錄中存在「mz.py」這個模組，那麼我們要使用時，可以先用`import`再接模組名稱（即檔名不含py後綴部分，可包括檔案所在目錄位置）陳述，接著就能使用其中的函式囉：
+```{python, eval = FALSE, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = FALSE}
+import mz
+print(mz.max_2(3, 5))
+print(mz.min_2(3, 5))
+print(mz.add_2(3, 5))
+print(mz.sub_2(3, 5))
+print(mz.mul_2(3, 5))
+print(mz.div_2(3, 5))
+```
+
+除了使用者自己製作的模組之外，python自身本來就帶有許多模組，詳細可參考[Python Module Index](https://docs.python.org/3/py-modindex.html)，我們以其中可產生亂數的random模組為例，要使用其中的choice函式，從某序列中隨機選出一個元素，因為是隨機的，每次結果不一定相同。
+```{python, eval = TRUE, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+import random
+print(random.choice("木火土金水"))
+```
+
+
+## 學習要點
+
+
+1. 明白模組的意義，並能自己製作模組。
+1. 明白如何使用模組，包括python自帶的及使用者所定義的。
+
+
+## 自我練習
+
++ 使用內建的數學（math）模組的最大公因數函式（`gcd( )`），自己設定幾組任意二個整數找出它們的最大公因素，如果不知道使用方法，可利用`help( )`查找。
+
+
+

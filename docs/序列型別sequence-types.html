@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1 Anaconda發行 | YiBaPython</title>
-  <meta name="description" content="1 Anaconda發行 | YiBaPython" />
+  <title>6 序列型別（Sequence Types） | YiBaPython</title>
+  <meta name="description" content="6 序列型別（Sequence Types） | YiBaPython" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1 Anaconda發行 | YiBaPython" />
+  <meta property="og:title" content="6 序列型別（Sequence Types） | YiBaPython" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 Anaconda發行 | YiBaPython" />
+  <meta name="twitter:title" content="6 序列型別（Sequence Types） | YiBaPython" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="哈囉世界hello-world.html"/>
+<link rel="prev" href="基本彙集型別basic-collection-types.html"/>
+<link rel="next" href="條件陳述conditional-statements.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -314,85 +314,310 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="anaconda發行" class="section level1">
-<h1><span class="header-section-number">1</span> Anaconda發行</h1>
-<div id="何謂anaconda" class="section level2">
-<h2><span class="header-section-number">1.1</span> 何謂Anaconda</h2>
-<p>開源軟件常有不同模組套件間的相互依賴（interdependence）等問題，因此有人就將較為相容者整理為某個發行（distribution），例如<a href="https://www.linux.org/">Linux</a>就有Ubuntu、Debian、CentOS、Fedora等發行，而<a href="https://www.python.org/">Python</a>一樣也有多個發行，其中一個常見的就是<a href="https://www.anaconda.com/">Anaconda</a>。</p>
+<div id="序列型別sequence-types" class="section level1">
+<h1><span class="header-section-number">6</span> 序列型別（Sequence Types）</h1>
+<p>前面提到「字串（string）、元組（tuple）、串列（list）」等都是有序的，也就是說其中元素的排列有其順序，這些有內在順序的型別，稱為序列型別（sequence types）。</p>
+<p>這裡再新學一個<code>range( )</code>函式，它會回報一個「範圍物件」，該物件同樣也是一種序列。</p>
+<p>還有，因為字串是很基本的型別，它的列出格式其實可以有很多變化，還有其他與串列相關的方法，如：拆分（split）、結合（join），本章我們就這方面來看一些應用。</p>
+<p>至此我們已經學了不少型別，每種型別都有與其他型別相同或不相同的方法，要怎樣能夠很快地知道某個型別的物件有哪些方法可用呢？如果在使用時用了很多不同的變項名稱來指涉物件，快弄不清楚有哪些變項，每個變項名稱代表什麼型別的物件？怎麼辦呢？請接著看本章後面解決方法。</p>
+<p>接著我們對序列型別的共用方法再回顧複習一下。</p>
+<div id="範圍range" class="section level2">
+<h2><span class="header-section-number">6.1</span> 範圍（range）</h2>
+<div id="範圍建構" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> 範圍建構</h3>
+<p>在「<a href="%E5%9F%BA%E6%9C%AC%E5%BD%99%E9%9B%86%E5%9E%8B%E5%88%A5basic-collection-types.html">基本彙集型別</a>」那一章，我們學過了「<a href="%E5%9F%BA%E6%9C%AC%E5%BD%99%E9%9B%86%E5%9E%8B%E5%88%A5basic-collection-types.html#%E7%AF%84%E5%9C%8D%E7%B4%A2%E5%BC%95">範圍索引</a>」，範圍物件也是同樣概念，它是一連串的整數，預設也是以零作為起點，直到最接近終點但不是終點的那個整數。我們一樣用例子來學習：</p>
+<div class="sourceCode" id="cb358"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb358-1"><a href="序列型別sequence-types.html#cb358-1"></a><span class="co"># 只輸入一個值，代表終點的值，如果輸入0為終點，起點預設也是0，因為沒有「從0開始到小於0的最大整數」，長度為0。</span></span>
+<span id="cb358-2"><a href="序列型別sequence-types.html#cb358-2"></a>r0 <span class="op">=</span> <span class="bu">range</span>(<span class="dv">0</span>)</span>
+<span id="cb358-3"><a href="序列型別sequence-types.html#cb358-3"></a>r1 <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>)</span>
+<span id="cb358-4"><a href="序列型別sequence-types.html#cb358-4"></a>r2 <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2</span>)</span>
+<span id="cb358-5"><a href="序列型別sequence-types.html#cb358-5"></a>r3 <span class="op">=</span> <span class="bu">range</span>(<span class="dv">3</span>)</span>
+<span id="cb358-6"><a href="序列型別sequence-types.html#cb358-6"></a><span class="bu">print</span>(<span class="bu">type</span>(r0), <span class="bu">len</span>(r0), r0, <span class="op">*</span>r0) <span class="co"># 列出型別、長度、物件、展開物件。</span></span></code></pre></div>
+<pre><code>## &lt;class &#39;range&#39;&gt; 0 range(0, 0)</code></pre>
+<div class="sourceCode" id="cb360"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb360-1"><a href="序列型別sequence-types.html#cb360-1"></a><span class="bu">print</span>(<span class="bu">type</span>(r1), <span class="bu">len</span>(r1), r1, <span class="op">*</span>r1)</span></code></pre></div>
+<pre><code>## &lt;class &#39;range&#39;&gt; 1 range(0, 1) 0</code></pre>
+<div class="sourceCode" id="cb362"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb362-1"><a href="序列型別sequence-types.html#cb362-1"></a><span class="bu">print</span>(<span class="bu">type</span>(r2), <span class="bu">len</span>(r2), r2, <span class="op">*</span>r2)</span></code></pre></div>
+<pre><code>## &lt;class &#39;range&#39;&gt; 2 range(0, 2) 0 1</code></pre>
+<div class="sourceCode" id="cb364"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb364-1"><a href="序列型別sequence-types.html#cb364-1"></a><span class="bu">print</span>(<span class="bu">type</span>(r2), <span class="bu">len</span>(r2), r2, <span class="op">*</span>r2)</span></code></pre></div>
+<pre><code>## &lt;class &#39;range&#39;&gt; 2 range(0, 2) 0 1</code></pre>
+<p>如果輸入二個值，第一個是起點，第二個是終點，實際範圍會小於終點，如下：</p>
+<div class="sourceCode" id="cb366"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb366-1"><a href="序列型別sequence-types.html#cb366-1"></a>r23 <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb366-2"><a href="序列型別sequence-types.html#cb366-2"></a>r35 <span class="op">=</span> <span class="bu">range</span>(<span class="dv">3</span>, <span class="dv">5</span>)</span>
+<span id="cb366-3"><a href="序列型別sequence-types.html#cb366-3"></a>r58 <span class="op">=</span> <span class="bu">range</span>(<span class="dv">5</span>, <span class="dv">8</span>)</span>
+<span id="cb366-4"><a href="序列型別sequence-types.html#cb366-4"></a><span class="bu">print</span>(<span class="bu">type</span>(r23), <span class="bu">len</span>(r23), r23, <span class="op">*</span>r23)</span></code></pre></div>
+<pre><code>## &lt;class &#39;range&#39;&gt; 1 range(2, 3) 2</code></pre>
+<div class="sourceCode" id="cb368"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb368-1"><a href="序列型別sequence-types.html#cb368-1"></a><span class="bu">print</span>(<span class="bu">type</span>(r35), <span class="bu">len</span>(r35), r35, <span class="op">*</span>r35)</span></code></pre></div>
+<pre><code>## &lt;class &#39;range&#39;&gt; 2 range(3, 5) 3 4</code></pre>
+<div class="sourceCode" id="cb370"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb370-1"><a href="序列型別sequence-types.html#cb370-1"></a><span class="bu">print</span>(<span class="bu">type</span>(r58), <span class="bu">len</span>(r58), r58, <span class="op">*</span>r58)</span></code></pre></div>
+<pre><code>## &lt;class &#39;range&#39;&gt; 3 range(5, 8) 5 6 7</code></pre>
+<p>如果輸入三個值，第三個是間隔，如下：</p>
+<div class="sourceCode" id="cb372"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb372-1"><a href="序列型別sequence-types.html#cb372-1"></a>r272 <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">2</span>)</span>
+<span id="cb372-2"><a href="序列型別sequence-types.html#cb372-2"></a>r193 <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">3</span>)</span>
+<span id="cb372-3"><a href="序列型別sequence-types.html#cb372-3"></a><span class="bu">print</span>(<span class="bu">type</span>(r272), <span class="bu">len</span>(r272), r272, <span class="op">*</span>r272)</span></code></pre></div>
+<pre><code>## &lt;class &#39;range&#39;&gt; 3 range(2, 7, 2) 2 4 6</code></pre>
+<div class="sourceCode" id="cb374"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb374-1"><a href="序列型別sequence-types.html#cb374-1"></a><span class="bu">print</span>(<span class="bu">type</span>(r193), <span class="bu">len</span>(r193), r193, <span class="op">*</span>r193)</span></code></pre></div>
+<pre><code>## &lt;class &#39;range&#39;&gt; 3 range(1, 9, 3) 1 4 7</code></pre>
 </div>
-<div id="anaconda安裝" class="section level2">
-<h2><span class="header-section-number">1.2</span> Anaconda安裝</h2>
-<p>這在網上已有很多說明，此處列舉幾個供參，基本上照著做就可以了：</p>
-<ul>
-<li><a href="https://ithelp.ithome.com.tw/articles/10229662">Windows10 安裝 Anaconda 環境</a></li>
-<li><a href="https://www.woodowlab.com/python-tutorial-0-anaconda/">Python教學第0章-Anaconda 完整安裝教學及搭建 vscode 開發環境</a></li>
-<li><a href="https://learnexp.tw/%E3%80%90python%E3%80%91windows%E7%92%B0%E5%A2%83-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8%EF%BC%88anaconda%EF%BC%89%E5%BE%9E0%E5%88%B01/">Windows環境 安裝教學（Anaconda）從0到1</a></li>
-<li><a href="https://medium.com/python4u/anaconda%E4%BB%8B%E7%B4%B9%E5%8F%8A%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8-f7dae6454ab6">Anaconda介紹及安裝教學</a></li>
-<li><a href="https://michaelchen.tech/blog/anaconda-primer/">Anaconda 簡易入門</a></li>
-</ul>
-</div>
-<div id="jupyter" class="section level2">
-<h2><span class="header-section-number">1.3</span> Jupyter</h2>
-<div id="何謂jupyter" class="section level3">
-<h3><span class="header-section-number">1.3.1</span> 何謂Jupyter</h3>
-<p><a href="https://jupyter.org/">Jupyter</a>是一種互動式記事本（interactive notebook），使用它可以立即得到（互動）操作結果。</p>
-</div>
-<div id="開啟jupyter" class="section level3">
-<h3><span class="header-section-number">1.3.2</span> 開啟Jupyter</h3>
-<p>此處以Windows為例：</p>
-<ol style="list-style-type: decimal">
-<li><p>開始＞Anaconda3，選取「Anaconda Navigator」或直接點擊「Jupyter Notebook」
-<img src="img/20200531_Anaconda_startup_menu.png" width="400" /></p></li>
-<li><p>如上步驟選取「Anaconda Navigator」此處再點「Jupyter Notebook」
-<img src="img/20200531_jupyter.png" width="1920" /></p></li>
-<li><p>開啟如下畫面，新增（new）一個「Python 3」的筆記
-<img src="img/20200531_jupyter_kernel.png" width="1605" /></p></li>
-<li><p>新的空白筆記畫面如下
-<img src="img/20200531_new_py3_ipynb.png" width="1607" /></p></li>
-</ol>
-</div>
-<div id="jupyter教學" class="section level3">
-<h3><span class="header-section-number">1.3.3</span> Jupyter教學</h3>
-<p>這裡找到一篇貼文<a href="https://zhuanlan.zhihu.com/p/32320214">最詳盡使用指南：超快上手 Jupyter Notebook</a>供參，如果沒能全部理解內容也沒關係，先感覺一下它大概怎麼用就行了。</p>
+<div id="範圍用途" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> 範圍用途</h3>
+<p>範圍（range）在後面談到迴圈（loop）時很好用，我們留待那時再談。</p>
 </div>
 </div>
-<div id="spyder" class="section level2">
-<h2><span class="header-section-number">1.4</span> Spyder</h2>
-<div id="何謂spyder" class="section level3">
-<h3><span class="header-section-number">1.4.1</span> 何謂Spyder</h3>
-<p><a href="https://www.spyder-ide.org/">Spyder</a>是一個整合開發環境（Integrated Development Environment，IDE），使用它可以幫助瞭解物件內容。</p>
+<div id="字串string" class="section level2">
+<h2><span class="header-section-number">6.2</span> 字串（string）</h2>
+<div id="字串格式" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> 字串格式</h3>
+<p>這裡我們來學字串的格式<code>format( )</code>方法，請看以下例子：</p>
+<div class="sourceCode" id="cb376"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb376-1"><a href="序列型別sequence-types.html#cb376-1"></a>name_1 <span class="op">=</span> <span class="st">&quot;黑妞&quot;</span></span>
+<span id="cb376-2"><a href="序列型別sequence-types.html#cb376-2"></a>name_2 <span class="op">=</span> <span class="st">&quot;白爺&quot;</span></span>
+<span id="cb376-3"><a href="序列型別sequence-types.html#cb376-3"></a>age_1 <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb376-4"><a href="序列型別sequence-types.html#cb376-4"></a>age_2 <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb376-5"><a href="序列型別sequence-types.html#cb376-5"></a>animal_1 <span class="op">=</span> <span class="st">&quot;狗兒&quot;</span></span>
+<span id="cb376-6"><a href="序列型別sequence-types.html#cb376-6"></a>animal_2 <span class="op">=</span> <span class="st">&quot;貓兒&quot;</span></span>
+<span id="cb376-7"><a href="序列型別sequence-types.html#cb376-7"></a>say_1 <span class="op">=</span> <span class="st">&quot;汪嗚&quot;</span></span>
+<span id="cb376-8"><a href="序列型別sequence-types.html#cb376-8"></a>say_2 <span class="op">=</span> <span class="st">&quot;喵凹&quot;</span></span>
+<span id="cb376-9"><a href="序列型別sequence-types.html#cb376-9"></a>string_a <span class="op">=</span> <span class="st">&quot;我的好朋友叫</span><span class="sc">{}</span><span class="st">，牠今年</span><span class="sc">{}</span><span class="st">歲，是隻</span><span class="sc">{}</span><span class="st">，最愛說的話是「</span><span class="sc">{}</span><span class="st">」！&quot;</span></span>
+<span id="cb376-10"><a href="序列型別sequence-types.html#cb376-10"></a>pet_a1 <span class="op">=</span> string_a.<span class="bu">format</span>(name_1, age_1, animal_1, say_1)</span>
+<span id="cb376-11"><a href="序列型別sequence-types.html#cb376-11"></a>pet_a2 <span class="op">=</span> string_a.<span class="bu">format</span>(name_2, age_2, animal_2, say_2)</span>
+<span id="cb376-12"><a href="序列型別sequence-types.html#cb376-12"></a><span class="bu">print</span>(pet_a1, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, pet_a2)</span></code></pre></div>
+<pre><code>## 我的好朋友叫黑妞，牠今年2歲，是隻狗兒，最愛說的話是「汪嗚」！ 
+##  我的好朋友叫白爺，牠今年5歲，是隻貓兒，最愛說的話是「喵凹」！</code></pre>
+<div class="sourceCode" id="cb378"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb378-1"><a href="序列型別sequence-types.html#cb378-1"></a>string_b <span class="op">=</span> <span class="st">&quot;我的好朋友叫</span><span class="sc">{0}</span><span class="st">，牠今年</span><span class="sc">{1}</span><span class="st">歲，是隻</span><span class="sc">{2}</span><span class="st">，最愛說的話是「</span><span class="sc">{3}</span><span class="st">」！&quot;</span></span>
+<span id="cb378-2"><a href="序列型別sequence-types.html#cb378-2"></a>pet_b1 <span class="op">=</span> string_b.<span class="bu">format</span>(name_1, age_1, animal_1, say_1)</span>
+<span id="cb378-3"><a href="序列型別sequence-types.html#cb378-3"></a>pet_b2 <span class="op">=</span> string_b.<span class="bu">format</span>(name_2, age_2, animal_2, say_2)</span>
+<span id="cb378-4"><a href="序列型別sequence-types.html#cb378-4"></a><span class="bu">print</span>(pet_b1, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, pet_b2)</span></code></pre></div>
+<pre><code>## 我的好朋友叫黑妞，牠今年2歲，是隻狗兒，最愛說的話是「汪嗚」！ 
+##  我的好朋友叫白爺，牠今年5歲，是隻貓兒，最愛說的話是「喵凹」！</code></pre>
+<div class="sourceCode" id="cb380"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb380-1"><a href="序列型別sequence-types.html#cb380-1"></a>string_c <span class="op">=</span> <span class="st">&quot;我的好朋友叫</span><span class="sc">{name}</span><span class="st">，牠今年</span><span class="sc">{age}</span><span class="st">歲，是隻</span><span class="sc">{animal}</span><span class="st">，最愛說的話是「</span><span class="sc">{say}</span><span class="st">」！&quot;</span></span>
+<span id="cb380-2"><a href="序列型別sequence-types.html#cb380-2"></a>pet_c1 <span class="op">=</span> string_c.<span class="bu">format</span>(name <span class="op">=</span> name_1, age <span class="op">=</span> age_1, animal <span class="op">=</span> animal_1, say <span class="op">=</span> say_1)</span>
+<span id="cb380-3"><a href="序列型別sequence-types.html#cb380-3"></a>pet_c2 <span class="op">=</span> string_c.<span class="bu">format</span>(name <span class="op">=</span> name_2, age <span class="op">=</span> age_2, animal <span class="op">=</span> animal_2, say <span class="op">=</span> say_2)</span>
+<span id="cb380-4"><a href="序列型別sequence-types.html#cb380-4"></a><span class="bu">print</span>(pet_c1, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, pet_c2)</span></code></pre></div>
+<pre><code>## 我的好朋友叫黑妞，牠今年2歲，是隻狗兒，最愛說的話是「汪嗚」！ 
+##  我的好朋友叫白爺，牠今年5歲，是隻貓兒，最愛說的話是「喵凹」！</code></pre>
 </div>
-<div id="開啟spyder" class="section level3">
-<h3><span class="header-section-number">1.4.2</span> 開啟Spyder</h3>
-<p>此處以Windows為例：</p>
-<ol style="list-style-type: decimal">
-<li><p>開始＞Anaconda3，選取「Anaconda Navigator」或直接點擊「Spyder」
-<img src="img/20200602_Anaconda_startup_menu.png" width="392" /></p></li>
-<li><p>如上步驟選取「Anaconda Navigator」此處再點「Spyder」
-<img src="img/20200602_spyder.png" width="1920" /></p></li>
-<li><p>開啟後的畫面如下；
-<img src="img/20200602_spyder_ide.png" width="1916" /></p></li>
-</ol>
+<div id="字串輸入" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> 字串輸入</h3>
+<p>我們可以用<code>input( )</code>函式來取得讓使用者輸入的字串，該函式所用的引數（餵給該函式的東西），一般是提示使用者輸入的話語，舉例如下：</p>
+<div class="sourceCode" id="cb382"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb382-1"><a href="序列型別sequence-types.html#cb382-1"></a>name <span class="op">=</span> <span class="bu">input</span>(<span class="st">&quot;請輸入您寵物的名字：&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in py_call_impl(callable, dots$args, dots$keywords): EOFError: EOF when reading a line
+## 
+## Detailed traceback: 
+##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
+<div class="sourceCode" id="cb384"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb384-1"><a href="序列型別sequence-types.html#cb384-1"></a>age <span class="op">=</span> <span class="bu">input</span>(<span class="st">&quot;請輸入您寵物的年紀：&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in py_call_impl(callable, dots$args, dots$keywords): EOFError: EOF when reading a line
+## 
+## Detailed traceback: 
+##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
+<div class="sourceCode" id="cb386"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb386-1"><a href="序列型別sequence-types.html#cb386-1"></a>animal <span class="op">=</span> <span class="bu">input</span>(<span class="st">&quot;請輸入您寵物是哪種動物：&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in py_call_impl(callable, dots$args, dots$keywords): EOFError: EOF when reading a line
+## 
+## Detailed traceback: 
+##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
+<div class="sourceCode" id="cb388"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb388-1"><a href="序列型別sequence-types.html#cb388-1"></a>say <span class="op">=</span> <span class="bu">input</span>(<span class="st">&quot;請輸入您寵物的叫聲：&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in py_call_impl(callable, dots$args, dots$keywords): EOFError: EOF when reading a line
+## 
+## Detailed traceback: 
+##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
+<div class="sourceCode" id="cb390"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb390-1"><a href="序列型別sequence-types.html#cb390-1"></a><span class="bu">print</span>(string_a.<span class="bu">format</span>(name, age, animal, say))</span></code></pre></div>
+<pre><code>## Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name &#39;name&#39; is not defined
+## 
+## Detailed traceback: 
+##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
 </div>
-<div id="spyder教學" class="section level3">
-<h3><span class="header-section-number">1.4.3</span> Spyder教學</h3>
-<p>這裡找到一篇貼文<a href="https://ithelp.ithome.com.tw/articles/10212062">從零開始帶你認識spyder開發環境</a>供參，如果沒能全部理解內容也沒關係，先感覺一下它大概怎麼用就行了。</p>
+<div id="字串的分拆和結合" class="section level3">
+<h3><span class="header-section-number">6.2.3</span> 字串的分拆和結合</h3>
+<p>前面學過的字串方法不包括字串的拆分和結合，我們先學拆分，<code>split( )</code>方法的作用是將整個字串在每個空白或指定字符處切開成串列中的各個元素。</p>
+<div class="sourceCode" id="cb392"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb392-1"><a href="序列型別sequence-types.html#cb392-1"></a>ppap <span class="op">=</span> <span class="st">&quot;Pen Pineapple Apple Pen&quot;</span></span>
+<span id="cb392-2"><a href="序列型別sequence-types.html#cb392-2"></a>ppap_splitted <span class="op">=</span> ppap.split()</span>
+<span id="cb392-3"><a href="序列型別sequence-types.html#cb392-3"></a><span class="bu">print</span>(ppap, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, ppap_splitted)</span></code></pre></div>
+<pre><code>## Pen Pineapple Apple Pen 
+##  [&#39;Pen&#39;, &#39;Pineapple&#39;, &#39;Apple&#39;, &#39;Pen&#39;]</code></pre>
+<div class="sourceCode" id="cb394"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb394-1"><a href="序列型別sequence-types.html#cb394-1"></a>pet_a1_splitted <span class="op">=</span> pet_a1.split(<span class="st">&quot;，&quot;</span>)</span>
+<span id="cb394-2"><a href="序列型別sequence-types.html#cb394-2"></a><span class="bu">print</span>(pet_a1_splitted)</span></code></pre></div>
+<pre><code>## [&#39;我的好朋友叫黑妞&#39;, &#39;牠今年2歲&#39;, &#39;是隻狗兒&#39;, &#39;最愛說的話是「汪嗚」！&#39;]</code></pre>
+<p>結合的話則用<code>join( )</code>方法，因為它是一個字串方法而不是串列方法，所以是「間隔字串.join(串列)」而不能反過來操作。</p>
+<div class="sourceCode" id="cb396"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb396-1"><a href="序列型別sequence-types.html#cb396-1"></a>ppap_joined <span class="op">=</span> <span class="st">&quot;~&quot;</span>.join(ppap_splitted)</span>
+<span id="cb396-2"><a href="序列型別sequence-types.html#cb396-2"></a><span class="bu">print</span>(ppap_joined)</span></code></pre></div>
+<pre><code>## Pen~Pineapple~Apple~Pen</code></pre>
+<div class="sourceCode" id="cb398"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb398-1"><a href="序列型別sequence-types.html#cb398-1"></a>pet_a1_joined <span class="op">=</span> <span class="st">&quot;！&quot;</span>.join(pet_a1_splitted)</span>
+<span id="cb398-2"><a href="序列型別sequence-types.html#cb398-2"></a><span class="bu">print</span>(pet_a1_joined)</span></code></pre></div>
+<pre><code>## 我的好朋友叫黑妞！牠今年2歲！是隻狗兒！最愛說的話是「汪嗚」！</code></pre>
 </div>
+</div>
+<div id="查找變項型別及其方法" class="section level2">
+<h2><span class="header-section-number">6.3</span> 查找變項型別及其方法</h2>
+<p>變項越弄越多，要知道哪個變項是什麼型別什麼內容，使用spyder可直接觀察右上區塊的「Variable explorer」，直接在該窗頁查找即可，畫面如下：
+<img src="img/20200605_spyder_varexp.png" width="1916" /></p>
+<p>要看環境中有哪些變項，以及各個變項有哪些方法，可使用<code>dir( )</code>函式：</p>
+<div class="sourceCode" id="cb400"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb400-1"><a href="序列型別sequence-types.html#cb400-1"></a><span class="bu">print</span>(<span class="bu">dir</span>( )) <span class="co"># 查看環境中的變項。</span></span></code></pre></div>
+<pre><code>## [&#39;R&#39;, &#39;__annotations__&#39;, &#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__spec__&#39;, &#39;age_1&#39;, &#39;age_2&#39;, &#39;animal_1&#39;, &#39;animal_2&#39;, &#39;name_1&#39;, &#39;name_2&#39;, &#39;pet_a1&#39;, &#39;pet_a1_joined&#39;, &#39;pet_a1_splitted&#39;, &#39;pet_a2&#39;, &#39;pet_b1&#39;, &#39;pet_b2&#39;, &#39;pet_c1&#39;, &#39;pet_c2&#39;, &#39;ppap&#39;, &#39;ppap_joined&#39;, &#39;ppap_splitted&#39;, &#39;r&#39;, &#39;r0&#39;, &#39;r1&#39;, &#39;r193&#39;, &#39;r2&#39;, &#39;r23&#39;, &#39;r272&#39;, &#39;r3&#39;, &#39;r35&#39;, &#39;r58&#39;, &#39;say_1&#39;, &#39;say_2&#39;, &#39;string_a&#39;, &#39;string_b&#39;, &#39;string_c&#39;, &#39;sys&#39;]</code></pre>
+<div class="sourceCode" id="cb402"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb402-1"><a href="序列型別sequence-types.html#cb402-1"></a><span class="bu">print</span>(<span class="bu">dir</span>(ppap)) <span class="co"># 查看ppap這個字串變項有哪些方法。</span></span></code></pre></div>
+<pre><code>## [&#39;__add__&#39;, &#39;__class__&#39;, &#39;__contains__&#39;, &#39;__delattr__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getitem__&#39;, &#39;__getnewargs__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__iter__&#39;, &#39;__le__&#39;, &#39;__len__&#39;, &#39;__lt__&#39;, &#39;__mod__&#39;, &#39;__mul__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__rmod__&#39;, &#39;__rmul__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;capitalize&#39;, &#39;casefold&#39;, &#39;center&#39;, &#39;count&#39;, &#39;encode&#39;, &#39;endswith&#39;, &#39;expandtabs&#39;, &#39;find&#39;, &#39;format&#39;, &#39;format_map&#39;, &#39;index&#39;, &#39;isalnum&#39;, &#39;isalpha&#39;, &#39;isascii&#39;, &#39;isdecimal&#39;, &#39;isdigit&#39;, &#39;isidentifier&#39;, &#39;islower&#39;, &#39;isnumeric&#39;, &#39;isprintable&#39;, &#39;isspace&#39;, &#39;istitle&#39;, &#39;isupper&#39;, &#39;join&#39;, &#39;ljust&#39;, &#39;lower&#39;, &#39;lstrip&#39;, &#39;maketrans&#39;, &#39;partition&#39;, &#39;replace&#39;, &#39;rfind&#39;, &#39;rindex&#39;, &#39;rjust&#39;, &#39;rpartition&#39;, &#39;rsplit&#39;, &#39;rstrip&#39;, &#39;split&#39;, &#39;splitlines&#39;, &#39;startswith&#39;, &#39;strip&#39;, &#39;swapcase&#39;, &#39;title&#39;, &#39;translate&#39;, &#39;upper&#39;, &#39;zfill&#39;]</code></pre>
+<div class="sourceCode" id="cb404"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb404-1"><a href="序列型別sequence-types.html#cb404-1"></a><span class="bu">print</span>(<span class="bu">dir</span>(ppap_splitted)) <span class="co"># 查看ppap_splitted這個串列變項有哪些方法。</span></span></code></pre></div>
+<pre><code>## [&#39;__add__&#39;, &#39;__class__&#39;, &#39;__contains__&#39;, &#39;__delattr__&#39;, &#39;__delitem__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getitem__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__iadd__&#39;, &#39;__imul__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__iter__&#39;, &#39;__le__&#39;, &#39;__len__&#39;, &#39;__lt__&#39;, &#39;__mul__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__reversed__&#39;, &#39;__rmul__&#39;, &#39;__setattr__&#39;, &#39;__setitem__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;append&#39;, &#39;clear&#39;, &#39;copy&#39;, &#39;count&#39;, &#39;extend&#39;, &#39;index&#39;, &#39;insert&#39;, &#39;pop&#39;, &#39;remove&#39;, &#39;reverse&#39;, &#39;sort&#39;]</code></pre>
 </div>
 <div id="學習要點" class="section level2">
-<h2><span class="header-section-number">1.5</span> 學習要點</h2>
+<h2><span class="header-section-number">6.4</span> 學習要點</h2>
 <ol style="list-style-type: decimal">
-<li>學會安裝Python的Anaconda發行。</li>
-<li>學會開啟Jupyter並能新增python記事本。</li>
-<li>學會開啟Spyder並能新增py腳本文件。</li>
+<li>明白如何使用<code>range( )</code>建構範圍物件。</li>
+<li>明白如何使用字串的<code>format( )</code>方法來改變格式，並且會用<code>input( )</code>函式來取得使用者的輸入值，能夠運用字串的拆分<code>split( )</code>與結合<code>join( )</code>方法。</li>
+<li>知道如何在spyder中查看物件型別及其內容，知道如何找到特定物件可用哪些方法。</li>
+<li>假設序列s和序列t是相同型別，n、i、j、k是整數，x是序列可接受的元素，序列可用方法列示如下：</li>
 </ol>
+<table>
+<colgroup>
+<col width="38%" />
+<col width="53%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">運算</th>
+<th align="left">作用</th>
+<th align="left">可變序列能用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">x&lt;U+00A0&gt;in&lt;U+00A0&gt;s</td>
+<td align="left">如元素x在序列s中回報真，否則回報假。</td>
+<td align="left">否</td>
+</tr>
+<tr class="even">
+<td align="left">x&lt;U+00A0&gt;not&lt;U+00A0&gt;in&lt;U+00A0&gt;s</td>
+<td align="left">如元素x不在序列中回報真，否則回報假。</td>
+<td align="left">否</td>
+</tr>
+<tr class="odd">
+<td align="left">s&lt;U+00A0&gt;+&lt;U+00A0&gt;t</td>
+<td align="left">將序列s與序列t串接。</td>
+<td align="left">否</td>
+</tr>
+<tr class="even">
+<td align="left">s&lt;U+00A0&gt;<em>&lt;U+00A0&gt;n&lt;U+00A0&gt;或&lt;U+00A0&gt;n&lt;U+00A0&gt;</em>&lt;U+00A0&gt;s</td>
+<td align="left">將序列s串接n次。</td>
+<td align="left">否</td>
+</tr>
+<tr class="odd">
+<td align="left">s[i]</td>
+<td align="left">取得序列s索引位置為i的元素。</td>
+<td align="left">否</td>
+</tr>
+<tr class="even">
+<td align="left">s[i:j]</td>
+<td align="left">取得序列s索引位置為i至未達j的元素。</td>
+<td align="left">否</td>
+</tr>
+<tr class="odd">
+<td align="left">s[i:j:k]</td>
+<td align="left">取得序列s索引位置為i至未達j且間隔k的元素。</td>
+<td align="left">否</td>
+</tr>
+<tr class="even">
+<td align="left">len(s)</td>
+<td align="left">取得序列s的長度。</td>
+<td align="left">否</td>
+</tr>
+<tr class="odd">
+<td align="left">min(s)</td>
+<td align="left">取得序列s中最小的元素。</td>
+<td align="left">否</td>
+</tr>
+<tr class="even">
+<td align="left">max(s)</td>
+<td align="left">取得序列s中最大的元素。</td>
+<td align="left">否</td>
+</tr>
+<tr class="odd">
+<td align="left">s.index(x[,&lt;U+00A0&gt;i[,&lt;U+00A0&gt;j]])</td>
+<td align="left">取得序列s中首次出現元素x的索引位置，自i起算至未達j。</td>
+<td align="left">否</td>
+</tr>
+<tr class="even">
+<td align="left">s.count(x)</td>
+<td align="left">取得序列s中元素x的個數。</td>
+<td align="left">否</td>
+</tr>
+<tr class="odd">
+<td align="left">s[i]&lt;U+00A0&gt;=&lt;U+00A0&gt;x</td>
+<td align="left">將序列s索引位置為i的元素用x替代。</td>
+<td align="left">是</td>
+</tr>
+<tr class="even">
+<td align="left">s[i:j]&lt;U+00A0&gt;=&lt;U+00A0&gt;t</td>
+<td align="left">將序列s索引位置為i至未達j的序列用元素t來替代。</td>
+<td align="left">是</td>
+</tr>
+<tr class="odd">
+<td align="left">del&lt;U+00A0&gt;s[i:j]</td>
+<td align="left">刪除序列s索引位置為i至未達j的元素，等同 s[i:j]&lt;U+00A0&gt;=&lt;U+00A0&gt;[]。</td>
+<td align="left">是</td>
+</tr>
+<tr class="even">
+<td align="left">s[i:j:k]&lt;U+00A0&gt;=&lt;U+00A0&gt;t</td>
+<td align="left">將序列s索引位置為i至未達j且間隔k的序列用元素t來替代。</td>
+<td align="left">是</td>
+</tr>
+<tr class="odd">
+<td align="left">del&lt;U+00A0&gt;s[i:j:k]</td>
+<td align="left">刪除序列s索引位置為i至未達j且間隔k的元素。</td>
+<td align="left">是</td>
+</tr>
+<tr class="even">
+<td align="left">s.append(x)</td>
+<td align="left">將元素x附加到序列s的尾端，等同&lt;U+00A0&gt;s[len(s):len(s)]&lt;U+00A0&gt;=&lt;U+00A0&gt;[x]。</td>
+<td align="left">是</td>
+</tr>
+<tr class="odd">
+<td align="left">s.clear()</td>
+<td align="left">刪除序列s中的全部元素，等同&lt;U+00A0&gt;del&lt;U+00A0&gt;s[:]。</td>
+<td align="left">是</td>
+</tr>
+<tr class="even">
+<td align="left">s.copy()</td>
+<td align="left">回報序列s淺複製的副本，等同&lt;U+00A0&gt;s[:]。</td>
+<td align="left">是</td>
+</tr>
+<tr class="odd">
+<td align="left">s.extend(t)&lt;U+00A0&gt;或&lt;U+00A0&gt;s&lt;U+00A0&gt;+=&lt;U+00A0&gt;t</td>
+<td align="left">將序列t展延至序列s的尾端，基本等同&lt;U+00A0&gt;s[len(s):len(s)]&lt;U+00A0&gt;=&lt;U+00A0&gt;t。</td>
+<td align="left">是</td>
+</tr>
+<tr class="even">
+<td align="left">s&lt;U+00A0&gt;*=&lt;U+00A0&gt;n</td>
+<td align="left">序列s更新為原來的n次重複。</td>
+<td align="left">是</td>
+</tr>
+<tr class="odd">
+<td align="left">s.insert(i,&lt;U+00A0&gt;x)</td>
+<td align="left">在序列s的索引位置i處插入x元素，等同&lt;U+00A0&gt;s[i:i]&lt;U+00A0&gt;=&lt;U+00A0&gt;[x]。</td>
+<td align="left">是</td>
+</tr>
+<tr class="even">
+<td align="left">s.pop([i])</td>
+<td align="left">自序列s中取出索引位置i的元素並將其從該序列移除。</td>
+<td align="left">是</td>
+</tr>
+<tr class="odd">
+<td align="left">s.remove(x)</td>
+<td align="left">刪除序列s中首次出現的元素x。</td>
+<td align="left">是</td>
+</tr>
+<tr class="even">
+<td align="left">s.reverse()</td>
+<td align="left">將序列s反向排列。</td>
+<td align="left">是</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="自我練習" class="section level2">
-<h2><span class="header-section-number">1.6</span> 自我練習</h2>
+<h2><span class="header-section-number">6.5</span> 自我練習</h2>
 <ol style="list-style-type: decimal">
-<li>嘗試安裝Python的Anaconda發行。</li>
-<li>開啟Jupyter，新增一個python的記事本，參考前段Jupyter教學內容，操作一下玩玩看。</li>
-<li>開啟Spyer，新增一個test.py腳本文件，參考前段Spyder教學內容，瀏覽一下各窗格對應功能。</li>
+<li>打開Jupyter或Spyder。</li>
+<li>自己建構一些範圍，列出長度、展開內容，看看與自己的預期是否相同。</li>
+<li>自己建構一些字串，嘗試不同格式調整，善用輸入功能，改變列出結果。</li>
+<li>使用可變的串列建構一些例子，應用前面表格中的每種序列方法，至少都試過三次，</li>
+<li>查找自己建構的物件有哪些方法，還有哪些是沒有學過的，善用幫助<code>help( )</code>嘗試尋找其使用方式，動作試著使用看看。</li>
 </ol>
 
 </div>
@@ -402,8 +627,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="哈囉世界hello-world.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="基本彙集型別basic-collection-types.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="條件陳述conditional-statements.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

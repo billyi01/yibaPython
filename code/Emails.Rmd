@@ -1,0 +1,61 @@
+# 電子郵件（EMails）
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(scipen=999)
+import::from(magrittr, "%>%")
+reticulate::use_python(readLines("./../../envar/pypath"))
+```
+
+```{python, include = FALSE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = FALSE}
+with open("D:/R/r/Proj/proj/yibaPython/envar/gmail") as gmail:
+    id, pw = gmail.read().split()
+    print(id, pw)
+```
+
+## 寄發郵件
+
+寄發郵件主要使用 smtp 協定。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+import smtplib 
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+
+# Microsoft Outlook uses 'smtp-mail.outlook.com' as server.
+smtp = smtplib.SMTP('smtp.gmail.com', 587) # create a SMTP instance.
+smtp.ehlo() # say hello to the server.
+smtp.starttls() # set connection in Transport Layer Security mode.
+smtp.login(id, pw) # use your own id and password to login.
+```
+
+準備郵件內容。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+msg = MIMEMultipart('alternative') 
+msg['From'] = 'no.id@m2k.com.tw'
+msg['To'] = 'un.known@m2k.com.tw'
+msg['Cc'] = 'fake.user@m2k.com.tw'
+msg['Subject'] = "TestMail"
+txt = "plain text" 
+htm = "<html><head></head><body><p>html text</p></body></html>"
+part1 = MIMEText(txt, 'plain', 'utf-8')
+part2 = MIMEText(htm, 'html', 'utf-8')
+msg.attach(part1)
+msg.attach(part2)
+
+# att = MIMEText(open('./img/python.png', 'rb').read(), 'base64', 'utf-8') 
+att = MIMEImage(open('./img/python.png', 'rb').read())  
+att["Content-Type"] = 'application/octet-stream'
+att["Content-Disposition"] = 'attachment; filename="pyicon.png"' 
+msg.attach(att)
+```
+
+寄出後結束連線。
+```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
+# return an empty dict if success.
+smtp.sendmail(from_addr = "Sender", to_addrs = "test.user@m2k.com.tw", msg = msg.as_string())
+smtp.quit()
+```
+
+
+

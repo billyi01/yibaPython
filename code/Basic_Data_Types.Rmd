@@ -19,7 +19,7 @@ print(2)
 
 ### 列出整數
 
-我們可以用`print()`陳述將其列出，在`( )`中，不必再加引號，因為「整數」不是「字串」，它們的「數據型別」是不同的。
+我們可以用`print( )`陳述將其列出，在`( )`中，不必再加引號，因為「整數」不是「字串」，它們的「數據型別」是不同的。
 記住，整數不加引號，字串要加引號。
 
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
@@ -31,7 +31,7 @@ print("3")
 
 ### 何謂數據型別
 
-電腦有幾個基本的數據型別，整數（integer）是其中之一，字串（string）也是其中之一，我們可以用`type()`查看物件的型別。
+電腦有幾個基本的數據型別，整數（integer）是其中之一，字串（string）也是其中之一，我們可以用`type( )`查看物件的型別。
 
 ```{python, include = TRUE, echo = TRUE, message = TRUE, warning = TRUE, error = TRUE, results = TRUE}
 print(type(3))
@@ -309,7 +309,7 @@ print('Hello, World!'.zfill(20)) # zfill( )：在字串左側補0至指定長度
 
 1. 瞭解「整數、浮點、布林、字串」四種型別。
 1. 學會使用`type( )`查看物件型別。
-1. 學會使用`int( )`、`float( )`、'bool( )`、'str( )`等函式，能在不同型別間進行轉換。
+1. 學會使用`int( )`、`float( )`、`bool( )`、`str( )`等函式，能在不同型別間進行轉換。
 1. 瞭解「算術運算」、「比較運算」、「邏輯運算」用在哪種場合或情境，能掌握各個運算符號（運算子）的具體使用方法。
 1. 學會使用多種字串方法，並能自行舉例說明。
 
