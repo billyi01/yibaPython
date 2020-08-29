@@ -60,7 +60,7 @@ print(type(r193), len(r193), r193, *r193)
 範圍（range）在後面談到迴圈（loop）時很好用，我們留待那時再談。
 
 
-## 字串（string）
+## 字串（string, sequence）
 
 ### 字串格式
 
@@ -133,7 +133,7 @@ print(dir(ppap_splitted)) # 查看ppap_splitted這個串列變項有哪些方法
 
 
 
-## 學習要點
+## 學習要點（序列型別）
 
 
 1. 明白如何使用`range( )`建構範圍物件。
@@ -149,7 +149,7 @@ print(dir(ppap_splitted)) # 查看ppap_splitted這個串列變項有哪些方法
 
 
 
-## 自我練習
+## 自我練習（序列型別）
 
 1. 打開Jupyter或Spyder。
 1. 自己建構一些範圍，列出長度、展開內容，看看與自己的預期是否相同。

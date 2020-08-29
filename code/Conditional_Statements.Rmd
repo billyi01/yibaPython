@@ -92,13 +92,13 @@ print("A1 has {} and super happy".format(money)) if money >= 200 else print("A1 
 請注意其「... if ... else ... if ... else ...」用法。
 
 
-## 學習要點
+## 學習要點（條件陳述）
 
 1. 複習「比較運算」、「邏輯運算」。
 2. 明白「if」、「if else」、「if elif else」語法，能夠熟練使用。
 
 
-## 應用情境
+## 應用情境（條件陳述）
 
 
 + 請寫一段代碼，執行後會要求使用者輸入得分，依據得分列出等第：

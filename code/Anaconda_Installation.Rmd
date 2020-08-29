@@ -70,14 +70,14 @@ options(scipen = 999)
 
 這裡找到一篇貼文[從零開始帶你認識spyder開發環境](https://ithelp.ithome.com.tw/articles/10212062)供參，如果沒能全部理解內容也沒關係，先感覺一下它大概怎麼用就行了。
 
-## 學習要點
+## 學習要點（Anaconda發行）
 
 1. 學會安裝Python的Anaconda發行。
 1. 學會開啟Jupyter並能新增python記事本。
 1. 學會開啟Spyder並能新增py腳本文件。
 
 
-## 自我練習
+## 自我練習（Anaconda發行）
 
 1. 嘗試安裝Python的Anaconda發行。
 1. 開啟Jupyter，新增一個python的記事本，參考前段Jupyter教學內容，操作一下玩玩看。
